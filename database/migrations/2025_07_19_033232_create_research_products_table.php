@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('category');
+            $table->foreignId('category_id')->constrained('categories');
             $table->enum('status', ['Active', 'Completed', 'On Hold']);
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');

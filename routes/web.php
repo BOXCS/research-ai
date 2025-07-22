@@ -35,11 +35,11 @@ Route::prefix('admin/pengabdian')->group(function () {
     Route::delete('/{id}', [PengabdianController::class, 'destroy'])->name('pengabdian.destroy');
 });
 
-Route::prefix('admin/team')->group(function () {
-    Route::get('/', [TeamController::class, 'index'])->name('team.index');
-    Route::get('/create', [TeamController::class, 'create'])->name('team.create');
-    Route::post('/', [TeamController::class, 'store'])->name('team.store');
-    Route::get('/{id}/edit', [TeamController::class, 'edit'])->name('team.edit');
-    Route::put('/{id}', [TeamController::class, 'update'])->name('team.update');
-    Route::delete('/{id}', [TeamController::class, 'destroy'])->name('team.destroy');
+Route::prefix('admin/team-member')->group(function () {
+    Route::get('/', [TeamController::class, 'index'])->name('team-member.index');
+    Route::get('/create', [TeamController::class, 'create'])->name('team-member.create');
+    Route::post('/', [TeamController::class, 'store'])->name('team-member.store');
+    Route::get('/{id}/edit', [TeamController::class, 'edit'])->name('team-member.edit');
+    Route::put('/{id}', [TeamController::class, 'update'])->name('team-member.update');
+    Route::delete('/{id}', [TeamController::class, 'destroy'])->name('team-member.destroy');
 });

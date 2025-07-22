@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class PengabdianMasyarakat extends Model
+class CommunityService extends Model
 {
     use HasFactory;
 
@@ -14,14 +14,13 @@ class PengabdianMasyarakat extends Model
         'description', 
         'image', 
         'target_audience',
-        'participants', 
-        'location', 
         'tgl_mulai',
         'tgl_selesai',
+        'participants', 
+        'location', 
         'duration',
         'status', 
         'impact',
-        
     ];
 
     protected $casts = [
@@ -29,4 +28,8 @@ class PengabdianMasyarakat extends Model
         'tgl_selesai' => 'date',
     ];
 
+    public function teamMembers()
+    {
+        return $this->belongsToMany(TeamMember::class, 'community_service_team')->withPivot('role');
+    }
 }

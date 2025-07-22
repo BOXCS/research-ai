@@ -34,7 +34,7 @@ class PublicationController extends Controller
             'citation_count' => 'required|integer|min:0',
             'abstract' => 'required|string',
             'pdf_url' => 'required|url',
-            'category' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         Publication::create($validated);
@@ -66,7 +66,7 @@ class PublicationController extends Controller
             'citation_count' => 'required|integer|min:0',
             'abstract' => 'required|string',
             'pdf_url' => 'required|url',
-            'category' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $publication->update($validated);

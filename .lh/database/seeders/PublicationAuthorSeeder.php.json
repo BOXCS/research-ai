@@ -1,0 +1,22 @@
+{
+    "sourceFile": "database/seeders/PublicationAuthorSeeder.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1753157766589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753165189947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,48 @@\n+<?php\n+\n+namespace Database\\Seeders;\n+\n+use Illuminate\\Database\\Seeder;\n+use Illuminate\\Support\\Facades\\DB;\n+\n+class PublicationAuthorSeeder extends Seeder\n+{\n+    public function run()\n+    {\n+        DB::table('author_publication')->insert([\n+            // First publication (3 authors)\n+            [\n+                'publication_id' => 1,\n+                'author_id' => 1,\n+                'author_order' => 1,\n+            ],\n+            [\n+                'publication_id' => 1,\n+                'author_id' => 4,\n+                'author_order' => 2,\n+            ],\n+            [\n+                'publication_id' => 1,\n+                'author_id' => 5,\n+                'author_order' => 3,\n+            ],\n+            // Second publication (2 authors)\n+            [\n+                'publication_id' => 2,\n+                'author_id' => 2,\n+                'author_order' => 1,\n+            ],\n+            [\n+                'publication_id' => 2,\n+                'author_id' => 1,\n+                'author_order' => 2,\n+            ],\n+            // Third publication (1 author)\n+            [\n+                'publication_id' => 3,\n+                'author_id' => 3,\n+                'author_order' => 1,\n+            ],\n+        ]);\n+    }\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1753157766589,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace Database\\Seeders;\n\nuse Illuminate\\Database\\Seeder;\nuse Illuminate\\Support\\Facades\\DB;\n\nclass PublicationAuthorSeeder extends Seeder\n{\n    public function run()\n    {\n        DB::table('publication_author')->insert([\n            // First publication (3 authors)\n            [\n                'publication_id' => 1,\n                'author_id' => 1,\n                'author_order' => 1,\n            ],\n            [\n                'publication_id' => 1,\n                'author_id' => 4,\n                'author_order' => 2,\n            ],\n            [\n                'publication_id' => 1,\n                'author_id' => 5,\n                'author_order' => 3,\n            ],\n            // Second publication (2 authors)\n            [\n                'publication_id' => 2,\n                'author_id' => 2,\n                'author_order' => 1,\n            ],\n            [\n                'publication_id' => 2,\n                'author_id' => 1,\n                'author_order' => 2,\n            ],\n            // Third publication (1 author)\n            [\n                'publication_id' => 3,\n                'author_id' => 3,\n                'author_order' => 1,\n            ],\n        ]);\n    }\n}"
+        }
+    ]
+}

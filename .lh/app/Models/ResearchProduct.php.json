@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1752931414172,
@@ -16,6 +16,10 @@
                 {
                     "date": 1753089249097,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,32 +18,17 @@\n         'tgl_selesai', // tambahkan ini\n         'image',\n         'video_url'\n     ];\n-    \n+\n+    // app/Models/ResearchProduct.php\n+    protected $casts = [\n+        'tgl_mulai' => 'date',\n+        'tgl_selesai' => 'date',\n+    ];\n+\n     // Tambahkan accessor untuk kompatibilitas\n     public function getDurationAttribute()\n     {\n         return $this->tgl_mulai->format('Y') . '-' . $this->tgl_selesai->format('Y');\n     }\n }\n-<?php\n-\n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class ResearchProduct extends Model\n-{\n-    use HasFactory;\n-\n-    protected $fillable = [\n-        'title',\n-        'description',\n\\ No newline at end of file\n-        'category',\n-        'status',\n-        'duration',\n-        'image',\n-        'video_url'\n-    ];\n-}\n"
+                },
+                {
+                    "date": 1753156152295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,48 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Model;\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+\n+class ResearchProduct extends Model\n+{\n+    use HasFactory;\n+\n+    protected $fillable = [\n+        'title',\n+        'description',\n+        'category_id', // ganti dari 'category'\n+        'status',\n+        'tgl_mulai',\n+        'tgl_selesai',\n+        'image',\n+        'video_url'\n+    ];\n+\n+    protected $casts = [\n+        'tgl_mulai' => 'date',\n+        'tgl_selesai' => 'date',\n+    ];\n+\n+    public function getDurationAttribute()\n+    {\n+        return $this->tgl_mulai->format('Y') . '-' . $this->tgl_selesai->format('Y');\n+    }\n+\n+    // Relasi baru\n+    public function category()\n+    {\n+        return $this->belongsTo(Category::class);\n+    }\n+\n+    public function teamMembers()\n+    {\n+        return $this->belongsToMany(TeamMember::class, 'research_team')->withPivot('role');\n+    }\n+\n+    public function publications()\n+    {\n+        return $this->belongsToMany(Publication::class, 'research_publications');\n+    }\n+}\n"
                 }
             ],
             "date": 1752931414172,

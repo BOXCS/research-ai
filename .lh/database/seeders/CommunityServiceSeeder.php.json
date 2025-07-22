@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/seeders/CommunityServiceSeeder.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753157788789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753157788789,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace Database\\Seeders;\n\nuse Illuminate\\Database\\Seeder;\nuse Illuminate\\Support\\Facades\\DB;\n\nclass CommunityServiceSeeder extends Seeder\n{\n    public function run()\n    {\n        DB::table('community_services')->insert([\n            [\n                'title' => 'Digital Literacy for Rural Teachers',\n                'description' => 'Training program to improve digital skills for teachers in rural areas.',\n                'image' => 'digital_literacy.jpg',\n                'target_audience' => 'Teachers',\n                'tgl_mulai' => '2023-02-01',\n                'tgl_selesai' => '2023-05-31',\n                'participants' => 120,\n                'location' => 'West Java',\n                'duration' => '4 months',\n                'status' => 'Completed',\n                'impact' => 'Improved digital teaching skills for 120 teachers across 30 schools',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'title' => 'Renewable Energy Workshop',\n                'description' => 'Community education about solar panel installation and maintenance.',\n                'image' => 'solar_workshop.jpg',\n                'target_audience' => 'Village Communities',\n                'tgl_mulai' => '2023-07-15',\n                'tgl_selesai' => '2023-12-15',\n                'participants' => 250,\n                'location' => 'East Nusa Tenggara',\n                'duration' => '5 months',\n                'status' => 'Ongoing',\n                'impact' => 'Installed 50 solar panels in 10 villages',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'title' => 'Health Screening Campaign',\n                'description' => 'Free health screening and education for urban poor communities.',\n                'image' => 'health_screening.jpg',\n                'target_audience' => 'Urban Poor Communities',\n                'tgl_mulai' => '2023-09-01',\n                'tgl_selesai' => '2023-09-30',\n                'participants' => 500,\n                'location' => 'Jakarta',\n                'duration' => '1 month',\n                'status' => 'Planned',\n                'impact' => 'Expected to screen 500 people for diabetes and hypertension',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n        ]);\n    }\n}"
+        }
+    ]
+}

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1752931810387,
@@ -12,6 +12,10 @@
                 {
                     "date": 1753088366474,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,35 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('research_products', function (Blueprint $table) {\n+            $table->id();\n+            $table->string('title');\n+            $table->text('description');\n+            $table->string('category');\n+            $table->enum('status', ['Active', 'Completed', 'On Hold']);\n+            $table->date('tgl_mulai');\n+            $table->date('tgl_selesai');\n+            $table->string('image');\n+            $table->string('video_url')->nullable();\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('research_products');\n+    }\n+};\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753155427145,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,35 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('research_products', function (Blueprint $table) {\n+            $table->id();\n+            $table->string('title');\n+            $table->text('description');\n+            $table->foreignId('category_id')->constrained('categories');\n+            $table->enum('status', ['Active', 'Completed', 'On Hold']);\n+            $table->date('tgl_mulai');\n+            $table->date('tgl_selesai');\n+            $table->string('image');\n+            $table->string('video_url')->nullable();\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('research_products');\n+    }\n+};\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1752931810387,

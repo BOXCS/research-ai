@@ -1,0 +1,22 @@
+{
+    "sourceFile": "database/migrations/2025_07_22_033807_publication_authors.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1753155502943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753165153860,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n      * Run the migrations.\n      */\n     public function up(): void\n     {\n-        Schema::create('publication_author', function (Blueprint $table) {\n+        Schema::create('author_publication', function (Blueprint $table) {\n             $table->foreignId('publication_id')->constrained();\n             $table->foreignId('author_id')->constrained();\n             $table->integer('author_order'); // To maintain author order\n             $table->primary(['publication_id', 'author_id']);\n@@ -23,7 +23,7 @@\n      * Reverse the migrations.\n      */\n     public function down(): void\n     {\n-        Schema::dropIfExists('publication_author');\n+        Schema::dropIfExists('author_publication');\n     }\n };\n"
+                }
+            ],
+            "date": 1753155502943,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('publication_author', function (Blueprint $table) {\n            $table->foreignId('publication_id')->constrained();\n            $table->foreignId('author_id')->constrained();\n            $table->integer('author_order'); // To maintain author order\n            $table->primary(['publication_id', 'author_id']);\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('publication_author');\n    }\n};\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/seeders/CategorySeeder.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753157589374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753157589374,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace Database\\Seeders;\n\nuse Illuminate\\Database\\Seeder;\nuse Illuminate\\Support\\Facades\\DB;\n\nclass CategorySeeder extends Seeder\n{\n    public function run()\n    {\n        DB::table('categories')->insert([\n            // Research categories\n            [\n                'name' => 'Artificial Intelligence',\n                'type' => 'research',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'name' => 'Renewable Energy',\n                'type' => 'research',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'name' => 'Biotechnology',\n                'type' => 'research',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            // Publication categories\n            [\n                'name' => 'Journal Article',\n                'type' => 'publication',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'name' => 'Conference Paper',\n                'type' => 'publication',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'name' => 'Book Chapter',\n                'type' => 'publication',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n        ]);\n    }\n}"
+        }
+    ]
+}

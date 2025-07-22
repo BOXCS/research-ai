@@ -16,17 +16,17 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('authors');
+            $table->foreignId('category_id')->constrained('categories');
             $table->string('journal');
             $table->integer('year');
             $table->string('volume');
             $table->string('issue');
             $table->string('pages');
-            $table->string('doi');
-            $table->decimal('impact_factor', 3, 1);
-            $table->integer('citation_count');
+            $table->string('doi')->unique();
+            $table->decimal('impact_factor', 3, 1)->nullable();
+            $table->integer('citation_count')->default(0)->nullable();
             $table->text('abstract');
             $table->string('pdf_url');
-            $table->string('category');
             $table->timestamps();
         });
     }

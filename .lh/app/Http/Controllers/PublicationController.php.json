@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1752933990204,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753167679308,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n             'impact_factor' => 'required|numeric|min:0',\n             'citation_count' => 'required|integer|min:0',\n             'abstract' => 'required|string',\n             'pdf_url' => 'required|url',\n-            'category' => 'required|string|max:255',\n+            'category_id' => 'required|exists:categories,id',\n         ]);\n \n         Publication::create($validated);\n \n@@ -65,9 +65,9 @@\n             'impact_factor' => 'required|numeric|min:0',\n             'citation_count' => 'required|integer|min:0',\n             'abstract' => 'required|string',\n             'pdf_url' => 'required|url',\n-            'category' => 'required|string|max:255',\n+            'category_id' => 'required|exists:categories,id',\n         ]);\n \n         $publication->update($validated);\n \n"
                 }
             ],
             "date": 1752933990204,

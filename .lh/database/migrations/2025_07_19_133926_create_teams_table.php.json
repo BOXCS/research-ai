@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1752932381108,
@@ -12,6 +12,14 @@
                 {
                     "date": 1752932598434,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n      */\n     public function up(): void\n     {\n         // database/migrations/xxxx_xx_xx_xxxxxx_create_team_members_table.php\n-        Schema::create('team_members', function (Blueprint $table) {\n+        Schema::create('teams', function (Blueprint $table) {\n             $table->id();\n             $table->string('name');\n             $table->string('position');\n             $table->text('specialization');\n"
+                },
+                {
+                    "date": 1753155568088,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,40 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        // database/migrations/xxxx_xx_xx_xxxxxx_create_team_members_table.php\n+        Schema::create('teams', function (Blueprint $table) {\n+            $table->id();\n+            $table->string('name');\n+            $table->string('position');\n+            $table->text('specialization');\n+            $table->text('education');\n+            $table->string('experience');\n+            $table->string('image');\n+            $table->string('email')->unique();\n+            $table->string('linkedin')->nullable();\n+            $table->string('google_scholar')->nullable();\n+            $table->integer('publications')->default(0);\n+            $table->integer('h_index')->default(0);\n+            $table->text('bio');\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('teams');\n+    }\n+};\n"
+                },
+                {
+                    "date": 1753155621280,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,40 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        // database/migrations/xxxx_xx_xx_xxxxxx_create_team_members_table.php\n+        Schema::create('team_members', function (Blueprint $table) {\n+            $table->id();\n+            $table->string('name');\n+            $table->string('position');\n+            $table->text('specialization');\n+            $table->text('education');\n+            $table->string('experience');\n+            $table->string('image');\n+            $table->string('email')->unique();\n+            $table->string('linkedin')->nullable();\n+            $table->string('google_scholar')->nullable();\n+            $table->integer('publications')->default(0);\n+            $table->integer('h_index')->default(0);\n+            $table->text('bio');\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('teams');\n+    }\n+};\n"
                 }
             ],
             "date": 1752932381108,

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/seeders/ResearchProductSeeder.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753157659606,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753157659606,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace Database\\Seeders;\n\nuse Illuminate\\Database\\Seeder;\nuse Illuminate\\Support\\Facades\\DB;\n\nclass ResearchProductSeeder extends Seeder\n{\n    public function run()\n    {\n        DB::table('research_products')->insert([\n            [\n                'title' => 'AI for Early Diabetes Detection',\n                'description' => 'Developing machine learning models to detect diabetes risk from retinal images.',\n                'category_id' => 1, // AI\n                'status' => 'Active',\n                'tgl_mulai' => '2023-01-15',\n                'tgl_selesai' => '2024-12-31',\n                'image' => 'diabetes_ai.jpg',\n                'video_url' => 'https://youtu.be/example1',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'title' => 'Perovskite Solar Cell Optimization',\n                'description' => 'Research on improving stability and efficiency of perovskite solar cells.',\n                'category_id' => 2, // Renewable Energy\n                'status' => 'Completed',\n                'tgl_mulai' => '2022-03-01',\n                'tgl_selesai' => '2023-06-30',\n                'image' => 'solar_cell.jpg',\n                'video_url' => null,\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'title' => 'Genomic Analysis of Dengue Virus',\n                'description' => 'Studying genomic variations of dengue virus strains in Southeast Asia.',\n                'category_id' => 3, // Biotechnology\n                'status' => 'On Hold',\n                'tgl_mulai' => '2023-05-10',\n                'tgl_selesai' => '2025-05-09',\n                'image' => 'dengue_genome.jpg',\n                'video_url' => 'https://youtu.be/example2',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n        ]);\n    }\n}"
+        }
+    ]
+}

@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1752932428589,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753154908776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,18 @@\n {\n     use HasFactory;\n \n     protected $fillable = [\n-        'name', 'position', 'specialization', 'education',\n-        'experience', 'image', 'email', 'linkedin',\n-        'google_scholar', 'publications', 'h_index', 'bio'\n+        'name', \n+        'position', \n+        'specialization', \n+        'education',\n+        'experience', \n+        'image', \n+        'email', \n+        'linkedin',\n+        'google_scholar', \n+        'publications', \n+        'h_index', \n+        'bio'\n     ];\n }\n"
                 }
             ],
             "date": 1752932428589,

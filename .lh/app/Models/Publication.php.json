@@ -3,11 +3,27 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1752932404261,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753156119059,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,43 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Model;\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+\n+class Publication extends Model\n+{\n+    use HasFactory;\n+\n+    protected $fillable = [\n+        'title',\n+        'journal',\n+        'year',\n+        'volume',\n+        'issue',\n+        'pages',\n+        'doi',\n+        'impact_factor',\n+        'citation_count',\n+        'abstract',\n+        'pdf_url',\n+        'category_id', // ganti dari 'category'\n+    ];\n+\n+    public function category()\n+    {\n+        return $this->belongsTo(Category::class);\n+    }\n+\n+    public function authors()\n+    {\n+        return $this->belongsToMany(Author::class)->withPivot('author_order');\n+    }\n+\n+    public function researchProducts()\n+    {\n+        return $this->belongsToMany(ResearchProduct::class, 'research_publications');\n+    }\n+}\n+\n+\n"
+                },
+                {
+                    "date": 1753165744499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,14 @@\n         'pdf_url',\n         'category_id', // ganti dari 'category'\n     ];\n \n+    protected $casts = [\n+        'abstract' => 'string',\n+        'authors' => 'string',\n+    ];\n+    \n+\n     public function category()\n     {\n         return $this->belongsTo(Category::class);\n     }\n@@ -40,21 +46,4 @@\n     }\n }\n \n \n-<?php\n-\n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class Publication extends Model\n-{\n-    use HasFactory;\n-\n-    protected $fillable = [\n-        'title', 'authors', 'journal', 'year', 'volume',\n-        'issue', 'pages', 'doi', 'impact_factor', 'citation_count',\n-        'abstract', 'pdf_url', 'category'\n-    ];\n-}\n"
+                },
+                {
+                    "date": 1753165805877,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,14 +23,8 @@\n         'pdf_url',\n         'category_id', // ganti dari 'category'\n     ];\n \n-    protected $casts = [\n-        'abstract' => 'string',\n-        'authors' => 'string',\n-    ];\n-    \n-\n     public function category()\n     {\n         return $this->belongsTo(Category::class);\n     }\n"
+                },
+                {
+                    "date": 1753167485507,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n     use HasFactory;\n \n     protected $fillable = [\n         'title',\n+        'authors',\n         'journal',\n         'year',\n         'volume',\n         'issue',\n"
                 }
             ],
             "date": 1752932404261,

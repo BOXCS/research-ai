@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         // database/migrations/xxxx_xx_xx_xxxxxx_create_team_members_table.php
-        Schema::create('teams', function (Blueprint $table) {
+        Schema::create('team_members', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('position');
@@ -20,11 +20,11 @@ return new class extends Migration
             $table->text('education');
             $table->string('experience');
             $table->string('image');
-            $table->string('email');
-            $table->string('linkedin');
-            $table->string('google_scholar');
-            $table->integer('publications');
-            $table->integer('h_index');
+            $table->string('email')->unique();
+            $table->string('linkedin')->nullable();
+            $table->string('google_scholar')->nullable();
+            $table->integer('publications')->default(0);
+            $table->integer('h_index')->default(0);
             $table->text('bio');
             $table->timestamps();
         });

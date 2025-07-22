@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1752932351684,
@@ -28,6 +28,10 @@
                 {
                     "date": 1753143159522,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n             $table->date('tgl_mulai');\n             $table->date('tgl_selesai');\n             $table->integer('participants');\n             $table->string('location');\n-            $table->date('date');\n+            $table->string('duration');\n             $table->enum('status', ['Completed', 'Ongoing', 'Planned']);\n             $table->text('impact');\n             $table->timestamps();\n         });\n"
+                },
+                {
+                    "date": 1753155823578,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,39 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        // database/migrations/xxxx_xx_xx_xxxxxx_create_community_programs_table.php\n+        Schema::create('community_services', function (Blueprint $table) {\n+            $table->id();\n+            $table->string('title');\n+            $table->text('description');\n+            $table->string('image');\n+            $table->string('target_audience');\n+            $table->date('tgl_mulai');\n+            $table->date('tgl_selesai');\n+            $table->integer('participants');\n+            $table->string('location');\n+            $table->string('duration');\n+            $table->enum('status', ['Completed', 'Ongoing', 'Planned']);\n+            $table->text('impact');\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('pengabdian_masyarakats');\n+    }\n+};\n"
                 }
             ],
             "date": 1752932351684,

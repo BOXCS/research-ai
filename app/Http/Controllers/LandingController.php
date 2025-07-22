@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CommunityService;
 use App\Models\PengabdianMasyarakat;
 use App\Models\Publication;
 use App\Models\ResearchProduct;
 use App\Models\Team;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -209,8 +211,8 @@ class LandingController extends Controller
     {
         $researchProducts = ResearchProduct::all();
         $publications = Publication::all();
-        $communityPrograms = PengabdianMasyarakat::all();
-        $teamMembers = Team::all();
+        $communityPrograms = CommunityService::all();
+        $teamMembers = TeamMember::all();
 
         return view('landing', compact(
             'researchProducts',

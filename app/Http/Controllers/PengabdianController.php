@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PengabdianMasyarakat;
+use App\Models\CommunityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,7 +13,7 @@ class PengabdianController extends Controller
      */
     public function index()
     {
-        $pengabdian = PengabdianMasyarakat::all();
+        $pengabdian = CommunityService::all();
         return view('admin.pengabdian.index', compact('pengabdian'));
     }
 
@@ -50,7 +50,7 @@ class PengabdianController extends Controller
             $validated['image'] = '/storage/' . $imagePath;
         }
 
-        PengabdianMasyarakat::create($validated);
+        CommunityService::create($validated);
 
         return redirect()->route('pengabdian.index')
             ->with('success', 'Pengabdian Masyarakat created successfully.');
@@ -69,7 +69,7 @@ class PengabdianController extends Controller
      */
     public function edit(string $id)
     {
-        $pengabdians = PengabdianMasyarakat::findOrFail($id);
+        $pengabdians = CommunityService::findOrFail($id);
         return view('admin.pengabdian.edit', compact('pengabdians'));
     }
 
@@ -78,7 +78,7 @@ class PengabdianController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $pengabdians = PengabdianMasyarakat::findOrFail($id);
+        $pengabdians = CommunityService::findOrFail($id);
 
         $validated = $request->validate([
             'title' => 'required|string|max:255',

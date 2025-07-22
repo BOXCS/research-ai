@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/seeders/AuthorSeeder.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753157702749,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753157702749,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace Database\\Seeders;\n\nuse Illuminate\\Database\\Seeder;\nuse Illuminate\\Support\\Facades\\DB;\n\nclass AuthorSeeder extends Seeder\n{\n    public function run()\n    {\n        DB::table('authors')->insert([\n            [\n                'name' => 'Sarah Wijaya',\n                'institution' => 'National University',\n                'email' => 'sarah@university.edu',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'name' => 'Bambang Susanto',\n                'institution' => 'National University',\n                'email' => 'bambang@university.edu',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'name' => 'Ani Rahmawati',\n                'institution' => 'National University',\n                'email' => 'ani@university.edu',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'name' => 'Michael Chen',\n                'institution' => 'Stanford University',\n                'email' => 'michael@stanford.edu',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'name' => 'Yuki Tanaka',\n                'institution' => 'University of Tokyo',\n                'email' => 'yuki@tokyo.ac.jp',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n        ]);\n    }\n}"
+        }
+    ]
+}

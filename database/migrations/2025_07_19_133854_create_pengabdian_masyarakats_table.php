@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         // database/migrations/xxxx_xx_xx_xxxxxx_create_community_programs_table.php
-        Schema::create('pengabdian_masyarakats', function (Blueprint $table) {
+        Schema::create('community_services', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description');

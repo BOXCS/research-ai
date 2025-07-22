@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1752932353116,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753155425170,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,40 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        // database/migrations/xxxx_xx_xx_xxxxxx_create_publications_table.php\n+        Schema::create('publications', function (Blueprint $table) {\n+            $table->id();\n+            $table->string('title');\n+            $table->foreignId('category_id')->constrained('categories');\n+            $table->string('journal');\n+            $table->integer('year');\n+            $table->string('volume');\n+            $table->string('issue');\n+            $table->string('pages');\n+            $table->string('doi')->unique();\n+            $table->decimal('impact_factor', 3, 1);\n+            $table->integer('citation_count')->default(0);\n+            $table->text('abstract');\n+            $table->string('pdf_url');\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('publications');\n+    }\n+};\n"
+                },
+                {
+                    "date": 1753156214203,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,40 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        // database/migrations/xxxx_xx_xx_xxxxxx_create_publications_table.php\n+        Schema::create('publications', function (Blueprint $table) {\n+            $table->id();\n+            $table->string('title');\n+            $table->foreignId('category_id')->constrained('categories');\n+            $table->string('journal');\n+            $table->integer('year');\n+            $table->string('volume');\n+            $table->string('issue');\n+            $table->string('pages');\n+            $table->string('doi')->unique();\n+            $table->decimal('impact_factor', 3, 1)->nullable();\n+            $table->integer('citation_count')->default(0)->nullable();\n+            $table->text('abstract');\n+            $table->string('pdf_url');\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('publications');\n+    }\n+};\n"
+                },
+                {
+                    "date": 1753166002054,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,41 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        // database/migrations/xxxx_xx_xx_xxxxxx_create_publications_table.php\n+        Schema::create('publications', function (Blueprint $table) {\n+            $table->id();\n+            $table->string('title');\n+            $table->text('authors');\n+            $table->foreignId('category_id')->constrained('categories');\n+            $table->string('journal');\n+            $table->integer('year');\n+            $table->string('volume');\n+            $table->string('issue');\n+            $table->string('pages');\n+            $table->string('doi')->unique();\n+            $table->decimal('impact_factor', 3, 1)->nullable();\n+            $table->integer('citation_count')->default(0)->nullable();\n+            $table->text('abstract');\n+            $table->string('pdf_url');\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('publications');\n+    }\n+};\n"
                 }
             ],
             "date": 1752932353116,

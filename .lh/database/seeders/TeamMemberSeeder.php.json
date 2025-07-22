@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/seeders/TeamMemberSeeder.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753157625896,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753157625896,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace Database\\Seeders;\n\nuse Illuminate\\Database\\Seeder;\nuse Illuminate\\Support\\Facades\\DB;\n\nclass TeamMemberSeeder extends Seeder\n{\n    public function run()\n    {\n        DB::table('team_members')->insert([\n            [\n                'name' => 'Dr. Sarah Wijaya',\n                'position' => 'Lead Researcher',\n                'specialization' => 'Machine Learning, Computer Vision',\n                'education' => 'Ph.D in Computer Science, Stanford University',\n                'experience' => '10 years in AI research',\n                'image' => 'sarah.jpg',\n                'email' => 'sarah@university.edu',\n                'linkedin' => 'linkedin.com/in/sarahwijaya',\n                'google_scholar' => 'scholar.google.com/citations?user=sarah123',\n                'publications' => 45,\n                'h_index' => 12,\n                'bio' => 'Expert in machine learning with focus on healthcare applications.',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'name' => 'Prof. Bambang Susanto',\n                'position' => 'Senior Researcher',\n                'specialization' => 'Renewable Energy, Solar Cells',\n                'education' => 'Ph.D in Material Science, MIT',\n                'experience' => '15 years in energy research',\n                'image' => 'bambang.jpg',\n                'email' => 'bambang@university.edu',\n                'linkedin' => 'linkedin.com/in/bambangsusanto',\n                'google_scholar' => 'scholar.google.com/citations?user=bambang456',\n                'publications' => 78,\n                'h_index' => 24,\n                'bio' => 'Pioneer in perovskite solar cell technology in Indonesia.',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n            [\n                'name' => 'Dr. Ani Rahmawati',\n                'position' => 'Researcher',\n                'specialization' => 'Bioinformatics, Genomics',\n                'education' => 'Ph.D in Bioinformatics, University of Tokyo',\n                'experience' => '7 years in biotechnology',\n                'image' => 'ani.jpg',\n                'email' => 'ani@university.edu',\n                'linkedin' => 'linkedin.com/in/anirahmawati',\n                'google_scholar' => 'scholar.google.com/citations?user=ani789',\n                'publications' => 32,\n                'h_index' => 9,\n                'bio' => 'Specialized in genomic data analysis for tropical diseases.',\n                'created_at' => now(),\n                'updated_at' => now(),\n            ],\n        ]);\n    }\n}"
+        }
+    ]
+}

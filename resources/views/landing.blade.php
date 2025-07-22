@@ -577,7 +577,7 @@
 
                         <!-- Image with gradient overlay -->
                         <div class="relative h-56 overflow-hidden">
-                            <img src="{{ $product['image'] }}" alt="{{ $product['title'] }}"
+                            <img src="{{ asset($product->image) }}" alt="{{ $product->title }}">
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
 
@@ -585,11 +585,11 @@
                             <div class="absolute top-4 left-4 flex flex-col items-start gap-2">
                                 <span
                                     class="px-3 py-1 bg-blue-600/90 text-white text-xs font-semibold rounded-full backdrop-blur-sm">
-                                    {{ $product['category'] }}
+                                    {{ optional($product->category)->name }}
                                 </span>
                                 <span
                                     class="px-3 py-1 {{ $product['status'] == 'Active' ? 'bg-green-500/90' : ($product['status'] == 'Completed' ? 'bg-blue-500/90' : 'bg-orange-500/90') }} text-white text-xs font-semibold rounded-full backdrop-blur-sm">
-                                    {{ $product['status'] }}
+                                    {{ $product->status }}
                                 </span>
                             </div>
                         </div>
@@ -597,10 +597,10 @@
                         <div class="relative z-10 p-6">
                             <h3
                                 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                                {{ $product['title'] }}
+                                {{ $product->title }}
                             </h3>
                             <p class="text-gray-600 mb-4 line-clamp-2">
-                                {{ $product['description'] }}
+                                {{ $product->description }}
                             </p>
 
                             <div class="flex items-center text-sm text-gray-500 mb-5">
@@ -685,14 +685,14 @@
                                 <div class="flex-1 pr-4">
                                     <h3
                                         class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
-                                        {{ $publication['title'] }}
+                                        {{ $publication->title }}
                                     </h3>
-                                    <p class="text-gray-600 text-sm mb-3">{{ $publication['authors'] }}</p>
+                                    <p class="text-gray-600 text-sm mb-3">{{ $publication->authors }}</p>
                                 </div>
                                 <div>
                                     <span
                                         class="px-3 py-1 bg-blue-100/80 text-blue-800 text-xs font-semibold rounded-full backdrop-blur-sm">
-                                        {{ $publication['category'] }}
+                                        {{ ($publication->category)->name ?? 'Uncategorized' }}
                                     </span>
                                 </div>
                             </div>
@@ -704,13 +704,13 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                                     </svg>
-                                    {{ $publication['journal'] }}
+                                    {{ $publication->journal }}
                                 </p>
                                 <p class="text-gray-500 text-sm mt-1">
-                                    Vol. {{ $publication['volume'] }}, Issue {{ $publication['issue'] }}
-                                    ({{ $publication['year'] }})
+                                    Vol. {{ $publication['volume'] }}, Issue {{ $publication->issue }}
+                                    ({{ $publication->year }})
                                     |
-                                    Pages {{ $publication['pages'] }}
+                                    Pages {{ $publication->pages }}
                                 </p>
                             </div>
 
@@ -722,7 +722,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                                     </svg>
-                                    Impact Factor: {{ $publication['impact_factor'] }}
+                                    Impact Factor: {{ $publication->impact_factor ?? 'N/A' }}
                                 </span>
                                 <span class="flex items-center bg-gray-100/70 px-3 py-1 rounded-full">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-blue-500"
@@ -730,21 +730,21 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                                     </svg>
-                                    {{ $publication['citation_count'] }} Citations
+                                    {{ $publication->citation_count ?? 0 }} Citations
                                 </span>
                             </div>
 
                             <!-- Abstract with read more toggle -->
                             <div x-data="{ expanded: false }" class="mb-6">
                                 <p class="text-gray-600 text-sm" x-show="!expanded" x-cloak>
-                                    {{ Str::limit($publication['abstract'], 150) }}
+                                    {{ Str::limit($publication->abstract, 150) }}
                                     <button @click="expanded = true"
                                         class="text-blue-600 hover:text-blue-800 font-medium">
                                         Read more...
                                     </button>
                                 </p>
                                 <p class="text-gray-600 text-sm" x-show="expanded" x-cloak>
-                                    {{ $publication['abstract'] }}
+                                    {{ $publication->abstract }}
                                     <button @click="expanded = false"
                                         class="text-blue-600 hover:text-blue-800 font-medium">
                                         Show less

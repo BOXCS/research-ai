@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/migrations/2025_07_22_034421_community_service_team.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753155867741,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753155867741,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('community_service_team', function (Blueprint $table) {\n            $table->foreignId('community_service_id')->constrained('community_services');\n            $table->foreignId('team_member_id')->constrained('team_members');\n            $table->string('role');\n            $table->primary(['community_service_id', 'team_member_id']);\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        //\n    }\n};\n"
+        }
+    ]
+}

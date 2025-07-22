@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/seeders/CommunityServiceTeamSeeder.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753157911265,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753157911265,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace Database\\Seeders;\n\nuse Illuminate\\Database\\Seeder;\nuse Illuminate\\Support\\Facades\\DB;\n\nclass CommunityServiceTeamSeeder extends Seeder\n{\n    public function run()\n    {\n        DB::table('community_service_team')->insert([\n            // Digital Literacy Team\n            [\n                'community_service_id' => 1,\n                'team_member_id' => 1,\n                'role' => 'Program Coordinator',\n            ],\n            // Renewable Energy Workshop Team\n            [\n                'community_service_id' => 2,\n                'team_member_id' => 2,\n                'role' => 'Technical Expert',\n            ],\n            [\n                'community_service_id' => 2,\n                'team_member_id' => 3,\n                'role' => 'Community Liaison',\n            ],\n            // Health Screening Team\n            [\n                'community_service_id' => 3,\n                'team_member_id' => 1,\n                'role' => 'Medical Coordinator',\n            ],\n            [\n                'community_service_id' => 3,\n                'team_member_id' => 3,\n                'role' => 'Data Manager',\n            ],\n        ]);\n    }\n}"
+        }
+    ]
+}
