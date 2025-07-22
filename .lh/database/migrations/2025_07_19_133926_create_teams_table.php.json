@@ -1,0 +1,22 @@
+{
+    "sourceFile": "database/migrations/2025_07_19_133926_create_teams_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752932381108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752932598434,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n      */\n     public function up(): void\n     {\n         // database/migrations/xxxx_xx_xx_xxxxxx_create_team_members_table.php\n-        Schema::create('team_members', function (Blueprint $table) {\n+        Schema::create('teams', function (Blueprint $table) {\n             $table->id();\n             $table->string('name');\n             $table->string('position');\n             $table->text('specialization');\n"
+                }
+            ],
+            "date": 1752932381108,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        // database/migrations/xxxx_xx_xx_xxxxxx_create_team_members_table.php\n        Schema::create('team_members', function (Blueprint $table) {\n            $table->id();\n            $table->string('name');\n            $table->string('position');\n            $table->text('specialization');\n            $table->text('education');\n            $table->string('experience');\n            $table->string('image');\n            $table->string('email');\n            $table->string('linkedin');\n            $table->string('google_scholar');\n            $table->integer('publications');\n            $table->integer('h_index');\n            $table->text('bio');\n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('teams');\n    }\n};\n"
+        }
+    ]
+}

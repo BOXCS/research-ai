@@ -1,0 +1,30 @@
+{
+    "sourceFile": "app/Models/PengabdianMasyarakat.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1752932417798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753139045735,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,27 @@\n {\n     use HasFactory;\n \n     protected $fillable = [\n-        'title', 'description', 'image', 'target_audience',\n-        'duration', 'participants', 'location', 'date',\n-        'status', 'impact'\n+        'title', \n+        'description', \n+        'image', \n+        'target_audience',\n+        'participants', \n+        'location', \n+        'date',\n+        'status', \n+        'impact',\n+        'tgl_mulai',\n+        'tgl_selesai'\n     ];\n+\n+    protected $casts = [\n+        'tgl_mulai' => 'date',\n+        'tgl_selesai' => 'date',\n+    ];\n+\n+    public function getDurationAttribute()\n+    {\n+        return $this->tgl_mulai->format('Y') . '-' . $this->tgl_selesai->format('Y');\n+    }\n }\n"
+                },
+                {
+                    "date": 1753144564194,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,13 +15,14 @@\n         'image', \n         'target_audience',\n         'participants', \n         'location', \n-        'date',\n+        'tgl_mulai',\n+        'tgl_selesai',\n+        'duration',\n         'status', \n         'impact',\n-        'tgl_mulai',\n-        'tgl_selesai'\n+        \n     ];\n \n     protected $casts = [\n         'tgl_mulai' => 'date',\n"
+                },
+                {
+                    "date": 1753144836193,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,32 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+use Illuminate\\Database\\Eloquent\\Model;\n+\n+class PengabdianMasyarakat extends Model\n+{\n+    use HasFactory;\n+\n+    protected $fillable = [\n+        'title', \n+        'description', \n+        'image', \n+        'target_audience',\n+        'participants', \n+        'location', \n+        'tgl_mulai',\n+        'tgl_selesai',\n+        'duration',\n+        'status', \n+        'impact',\n+        \n+    ];\n+\n+    protected $casts = [\n+        'tgl_mulai' => 'date',\n+        'tgl_selesai' => 'date',\n+    ];\n+\n+}\n"
+                }
+            ],
+            "date": 1752932417798,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass PengabdianMasyarakat extends Model\n{\n    use HasFactory;\n\n    protected $fillable = [\n        'title', 'description', 'image', 'target_audience',\n        'duration', 'participants', 'location', 'date',\n        'status', 'impact'\n    ];\n}\n"
+        }
+    ]
+}

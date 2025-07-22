@@ -1,0 +1,22 @@
+{
+    "sourceFile": "database/migrations/2025_07_19_033232_create_research_products_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752931810387,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753088366474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,35 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('research_products', function (Blueprint $table) {\n+            $table->id();\n+            $table->string('title');\n+            $table->text('description');\n+            $table->string('category');\n+            $table->enum('status', ['Active', 'Completed', 'On Hold']);\n+            $table->date('tgl_mulai');\n+            $table->date('tgl_selesai');\n+            $table->string('image');\n+            $table->string('video_url')->nullable();\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('research_products');\n+    }\n+};\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1752931810387,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('research_products', function (Blueprint $table) {\n            $table->id();\n            $table->string('title');\n            $table->text('description');\n            $table->string('category');\n            $table->enum('status', ['Active', 'Completed', 'On Hold']);\n            $table->string('duration');\n            $table->string('image');\n            $table->string('video_url')->nullable();\n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('research_products');\n    }\n};"
+        }
+    ]
+}

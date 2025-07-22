@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Http/Controllers/PublicationController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752933990204,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752933990204,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers;\n\nuse App\\Models\\Publication;\nuse Illuminate\\Http\\Request;\nuse Illuminate\\Support\\Facades\\Storage;\n\nclass PublicationController extends Controller\n{\n    public function index()\n    {\n        $publications = Publication::all();\n        return view('admin.publications.index', compact('publications'));\n    }\n\n    public function create()\n    {\n        return view('admin.publications.create');\n    }\n\n    public function store(Request $request)\n    {\n        $validated = $request->validate([\n            'title' => 'required|string|max:255',\n            'authors' => 'required|string',\n            'journal' => 'required|string|max:255',\n            'year' => 'required|integer|min:1900|max:' . (date('Y') + 1),\n            'volume' => 'required|string|max:50',\n            'issue' => 'required|string|max:50',\n            'pages' => 'required|string|max:50',\n            'doi' => 'required|string|max:255',\n            'impact_factor' => 'required|numeric|min:0',\n            'citation_count' => 'required|integer|min:0',\n            'abstract' => 'required|string',\n            'pdf_url' => 'required|url',\n            'category' => 'required|string|max:255',\n        ]);\n\n        Publication::create($validated);\n\n        return redirect()->route('publications.index')\n                         ->with('success', 'Publication created successfully.');\n    }\n\n    public function edit($id)\n    {\n        $publication = Publication::findOrFail($id);\n        return view('admin.publications.edit', compact('publication'));\n    }\n\n    public function update(Request $request, $id)\n    {\n        $publication = Publication::findOrFail($id);\n\n        $validated = $request->validate([\n            'title' => 'required|string|max:255',\n            'authors' => 'required|string',\n            'journal' => 'required|string|max:255',\n            'year' => 'required|integer|min:1900|max:' . (date('Y') + 1),\n            'volume' => 'required|string|max:50',\n            'issue' => 'required|string|max:50',\n            'pages' => 'required|string|max:50',\n            'doi' => 'required|string|max:255',\n            'impact_factor' => 'required|numeric|min:0',\n            'citation_count' => 'required|integer|min:0',\n            'abstract' => 'required|string',\n            'pdf_url' => 'required|url',\n            'category' => 'required|string|max:255',\n        ]);\n\n        $publication->update($validated);\n\n        return redirect()->route('publications.index')\n                         ->with('success', 'Publication updated successfully.');\n    }\n\n    public function destroy($id)\n    {\n        $publication = Publication::findOrFail($id);\n        $publication->delete();\n\n        return redirect()->route('publications.index')\n                         ->with('success', 'Publication deleted successfully.');\n    }\n}"
+        }
+    ]
+}

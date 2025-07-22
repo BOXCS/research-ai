@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Console/Commands/UpdatePublicationMetrics.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753090534895,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753090534895,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Console\\Commands;\n\nuse Illuminate\\Console\\Command;\nuse App\\Models\\Publication;\n\nclass UpdatePublicationMetrics extends Command\n{\n    protected $signature = 'update:metrics';\n    protected $description = 'Update citation count and impact factor for all publications';\n\n    public function handle()\n    {\n        $publications = Publication::all();\n\n        foreach ($publications as $pub) {\n            $this->info(\"Updating: \" . $pub->title);\n\n            $input = json_encode([\n                'title' => $pub->title,\n                'journal' => $pub->journal,\n            ]);\n\n            $command = \"python3 resources/scripts/scraper.py \" . escapeshellarg($input);\n            $output = shell_exec($command);\n            $metrics = json_decode($output, true);\n\n            if ($metrics) {\n                $pub->citation_count = $metrics['citation_count'] ?? $pub->citation_count;\n                $pub->impact_factor = $metrics['impact_factor'] ?? $pub->impact_factor;\n                $pub->save();\n\n                $this->info(\"→ Citations: {$pub->citation_count}, Impact Factor: {$pub->impact_factor}\");\n            } else {\n                $this->warn(\"→ Failed to retrieve metrics.\");\n            }\n        }\n\n        $this->info(\"Done.\");\n    }\n}\n"
+        }
+    ]
+}

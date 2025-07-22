@@ -1,0 +1,22 @@
+{
+    "sourceFile": "app/Console/Kernel.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1753090674120,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753090684265,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n {\r\n     protected function schedule(Schedule $schedule): void\r\n     {\r\n         // Jadwalkan perintah artisan di sini\r\n-        // $schedule->command('update:metrics')->daily();\r\n+        $schedule->command('update:metrics')->daily();\r\n     }\r\n \r\n     protected function commands(): void\r\n     {\r\n"
+                }
+            ],
+            "date": 1753090674120,
+            "name": "Commit-0",
+            "content": "<?php\r\n\r\nnamespace App\\Console;\r\n\r\nuse Illuminate\\Console\\Scheduling\\Schedule;\r\nuse Illuminate\\Foundation\\Console\\Kernel as ConsoleKernel;\r\n\r\nclass Kernel extends ConsoleKernel\r\n{\r\n    protected function schedule(Schedule $schedule): void\r\n    {\r\n        // Jadwalkan perintah artisan di sini\r\n        // $schedule->command('update:metrics')->daily();\r\n    }\r\n\r\n    protected function commands(): void\r\n    {\r\n        $this->load(__DIR__.'/Commands');\r\n\r\n        require base_path('routes/console.php');\r\n    }\r\n}\r\n"
+        }
+    ]
+}

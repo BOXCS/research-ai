@@ -1,0 +1,18 @@
+{
+    "sourceFile": "resources/scripts/scraper.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753090500371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753090500371,
+            "name": "Commit-0",
+            "content": "import sys\r\nimport json\r\nfrom scholarly import scholarly\r\nimport requests\r\nfrom bs4 import BeautifulSoup\r\n\r\ndef get_citation_count(title):\r\n    try:\r\n        search_query = scholarly.search_pubs(title)\r\n        result = next(search_query, None)\r\n        if result:\r\n            return result.get('num_citations', 0)\r\n    except:\r\n        pass\r\n    return 0\r\n\r\ndef get_sjr_score(journal):\r\n    try:\r\n        url = f\"https://www.scimagojr.com/journalsearch.php?q={journal.replace(' ', '+')}\"\r\n        r = requests.get(url)\r\n        soup = BeautifulSoup(r.text, \"html.parser\")\r\n        journal_link = soup.select_one(\"a[href^='journalsearch.php?tip=sid']\")\r\n        if journal_link:\r\n            detail_url = \"https://www.scimagojr.com/\" + journal_link['href']\r\n            detail_page = requests.get(detail_url)\r\n            detail_soup = BeautifulSoup(detail_page.text, \"html.parser\")\r\n            sjr = detail_soup.find(\"div\", class_=\"cell\", string=\"SJR\")\r\n            if sjr:\r\n                value = sjr.find_next(\"div\", class_=\"cell\").text.strip()\r\n                return float(value.replace(',', '.'))\r\n    except:\r\n        pass\r\n    return None\r\n\r\nif __name__ == \"__main__\":\r\n    # Laravel akan mengirim JSON string berisi title dan journal\r\n    data = json.loads(sys.argv[1])\r\n    title = data['title']\r\n    journal = data['journal']\r\n\r\n    result = {\r\n        'citation_count': get_citation_count(title),\r\n        'impact_factor': get_sjr_score(journal)\r\n    }\r\n\r\n    print(json.dumps(result))\r\n"
+        }
+    ]
+}

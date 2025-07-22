@@ -1,0 +1,26 @@
+{
+    "sourceFile": "database/migrations/2025_07_21_223619_alter_duration_to_tgl_mulai_selesai.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1753137560415,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753137588415,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n      * Run the migrations.\n      */\n     public function up(): void\n     {\n-        Schema::table('pengabdian_masyarakat', function (Blueprint $table) {\n+        Schema::table('pengabdian_masyarakats', function (Blueprint $table) {\n             //\n             $table->date('tgl_mulai');\n             $table->date('tgl_selesai');\n         });\n@@ -22,9 +22,9 @@\n      * Reverse the migrations.\n      */\n     public function down(): void\n     {\n-        Schema::table('pengabdian_masyarakat', function (Blueprint $table) {\n+        Schema::table('pengabdian_masyarakats', function (Blueprint $table) {\n             //\n             $table->string('duration');\n         });\n     }\n"
+                },
+                {
+                    "date": 1753137642053,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,7 @@\n     public function down(): void\n     {\n         Schema::table('pengabdian_masyarakats', function (Blueprint $table) {\n             //\n-            $table->string('duration');\n         });\n     }\n };\n"
+                }
+            ],
+            "date": 1753137560415,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::table('pengabdian_masyarakat', function (Blueprint $table) {\n            //\n            $table->date('tgl_mulai');\n            $table->date('tgl_selesai');\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::table('pengabdian_masyarakat', function (Blueprint $table) {\n            //\n            $table->string('duration');\n        });\n    }\n};\n"
+        }
+    ]
+}
