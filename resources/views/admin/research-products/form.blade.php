@@ -30,9 +30,9 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                    <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
+                    <label for="category_id" class="block text-sm font-medium text-gray-700">Kategori</label>
                     @php
-                        $categories = \App\Models\Category::all();
+                        $categories = \App\Models\Category::where('type', 'research')->get(); // atau 'publication' jika itu konteksnya
                     @endphp
                     <select name="category_id" id="category_id"
                         class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
@@ -47,11 +47,19 @@
                     @error('category_id')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
+                </div>
 
-                    @error('category')
+                <div class="mt-4">
+                    <label for="new_category" class="block text-sm font-medium text-gray-700">Atau Buat Kategori
+                        Baru</label>
+                    <input type="text" name="new_category" id="new_category" placeholder="Nama kategori baru"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        value="{{ old('new_category') }}">
+                    @error('new_category')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
+
 
                 <div>
                     <label for="status" class="block text-sm font-medium text-gray-700">Status</label>

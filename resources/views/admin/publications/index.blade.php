@@ -22,7 +22,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Journal</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Impact Factor</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Citation</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                 </tr>
             </thead>
@@ -31,7 +31,7 @@
                 <tr>
                     <td class="px-6 py-4">
                         <div class="text-sm font-medium text-gray-900">{{ $publication->title }}</div>
-                        <div class="text-sm text-gray-500">{{ $publication->category }}</div>
+                        <div class="text-sm text-gray-500">{{ $publication->category->name }}</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {{ $publication->journal }}
@@ -40,7 +40,7 @@
                         {{ $publication->year }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {{ $publication->impact_factor }}
+                        {{ $publication->citation_count }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <a href="{{ route('publications.edit', $publication->id) }}" class="text-blue-600 hover:text-blue-900 mr-3">

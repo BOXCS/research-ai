@@ -24,10 +24,11 @@ class ResearchProductController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'nullable|exists:categories,id',
+            'new_category' => 'nullable|string|max:255',
             'status' => 'required|in:Active,Completed,On Hold',
             'tgl_mulai' => 'required|date',
             'tgl_selesai' => 'required|date|after_or_equal:tgl_mulai',
@@ -35,16 +36,34 @@ class ResearchProductController extends Controller
             'video_url' => 'nullable|url',
         ]);
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('research-products', 'public');
-            $validated['image'] = '/storage/' . $imagePath;
+        if (!$request->filled('category_id') && !$request->filled('new_category')) {
+            return back()->withErrors([
+                'category_id' => 'Silakan pilih kategori atau isi kategori baru.',
+                'new_category' => 'Silakan pilih kategori atau isi kategori baru.',
+            ])->withInput();
         }
 
-        ResearchProduct::create($validated);
+        if ($request->filled('new_category')) {
+            $category = Category::create([
+                'name' => $request->new_category,
+                'type' => 'research',
+            ]);
+            $request->merge(['category_id' => $category->id]);
+        }
+
+        $data = $request->except(['new_category']);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('research-products', 'public');
+            $data['image'] = '/storage/' . $imagePath;
+        }
+
+        ResearchProduct::create($data);
 
         return redirect()->route('research-products.index')
             ->with('success', 'Research product created successfully.');
     }
+
 
     public function edit($id)
     {
@@ -57,16 +76,34 @@ class ResearchProductController extends Controller
     {
         $product = ResearchProduct::findOrFail($id);
 
-        $validated = $request->validate([
+        $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'nullable|exists:categories,id',
+            'new_category' => 'nullable|string|max:255',
             'status' => 'required|in:Active,Completed,On Hold',
             'tgl_mulai' => 'required|date',
             'tgl_selesai' => 'required|date|after_or_equal:tgl_mulai',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'video_url' => 'nullable|url',
         ]);
+
+        if (!$request->filled('category_id') && !$request->filled('new_category')) {
+            return back()->withErrors([
+                'category_id' => 'Silakan pilih kategori atau isi kategori baru.',
+                'new_category' => 'Silakan pilih kategori atau isi kategori baru.',
+            ])->withInput();
+        }
+
+        if ($request->filled('new_category')) {
+            $category = Category::create([
+                'name' => $request->new_category,
+                'type' => 'research',
+            ]);
+            $request->merge(['category_id' => $category->id]);
+        }
+
+        $data = $request->except(['new_category']);
 
         if ($request->hasFile('image')) {
             if ($product->image) {
@@ -75,14 +112,15 @@ class ResearchProductController extends Controller
             }
 
             $imagePath = $request->file('image')->store('research-products', 'public');
-            $validated['image'] = '/storage/' . $imagePath;
+            $data['image'] = '/storage/' . $imagePath;
         }
 
-        $product->update($validated);
+        $product->update($data);
 
         return redirect()->route('research-products.index')
             ->with('success', 'Research product updated successfully.');
     }
+
 
     public function destroy($id)
     {

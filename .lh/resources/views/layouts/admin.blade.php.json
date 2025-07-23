@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1752931430924,
@@ -28,6 +28,10 @@
                 {
                     "date": 1753145291629,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n                     </a>\r\n                 </li>\r\n                 <li>\r\n                     <a href=\"{{ route('pengabdian.index') }}\" class=\"block px-4 py-2 rounded hover:bg-gray-700 {{ request()->is('admin/pengabdian*') ? 'bg-gray-700' : '' }}\">\r\n-                        <i class=\"fas fa-book mr-2\"></i> Pengabdian Masyarakat\r\n+                        <i class=\"fas fa-book mr-2\"></i> Pengabdian\r\n                     </a>\r\n                 </li>\r\n             </ul>\r\n         </div>\r\n"
+                },
+                {
+                    "date": 1753222327293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,47 @@\n+<!DOCTYPE html>\r\n+<html lang=\"en\">\r\n+<head>\r\n+    <meta charset=\"UTF-8\">\r\n+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n+    <title>Admin Panel - Research AI</title>\r\n+    <script src=\"https://cdn.tailwindcss.com\"></script>\r\n+    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\" rel=\"stylesheet\">\r\n+</head>\r\n+<body class=\"bg-gray-100\">\r\n+    <div class=\"min-h-screen\">\r\n+        <!-- Sidebar -->\r\n+        <div class=\"bg-gray-800 text-white w-64 fixed h-full px-4 py-8\">\r\n+            <h1 class=\"text-2xl font-bold mb-8\">Research AI Admin</h1>\r\n+            <ul class=\"space-y-2\">\r\n+                <li>\r\n+                    <a href=\"{{ route('research-products.index') }}\" class=\"block px-4 py-2 rounded hover:bg-gray-700 {{ request()->is('admin/research-products*') ? 'bg-gray-700' : '' }}\">\r\n+                        <i class=\"fas fa-flask mr-2\"></i> Research Products\r\n+                    </a>\r\n+                </li>\r\n+                <li>\r\n+                    <a href=\"{{ route('publications.index') }}\" class=\"block px-4 py-2 rounded hover:bg-gray-700 {{ request()->is('admin/publications*') ? 'bg-gray-700' : '' }}\">\r\n+                        <i class=\"fas fa-book mr-2\"></i> Publications\r\n+                    </a>\r\n+                </li>\r\n+                <li>\r\n+                    <a href=\"{{ route('pengabdian.index') }}\" class=\"block px-4 py-2 rounded hover:bg-gray-700 {{ request()->is('admin/pengabdian*') ? 'bg-gray-700' : '' }}\">\r\n+                        <i class=\"fas fa-book mr-2\"></i> Pengabdian\r\n+                    </a>\r\n+                </li>\r\n+                <li>\r\n+                    <a href=\"{{ route('team-member.index') }}\" class=\"block px-4 py-2 rounded hover:bg-gray-700 {{ request()->is('admin/team-member*') ? 'bg-gray-700' : '' }}\">\r\n+                        <i class=\"fas fa-book mr-2\"></i> Team\r\n+                    </a>\r\n+                </li>\r\n+            </ul>\r\n+        </div>\r\n+\r\n+        <!-- Main Content -->\r\n+        <div class=\"ml-64 p-8\">\r\n+            @yield('content')\r\n+        </div>\r\n+    </div>\r\n+\r\n+    @stack('scripts')\r\n+</body>\r\n+</html>\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1752931430924,

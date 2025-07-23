@@ -715,7 +715,7 @@
                             </div>
 
                             <!-- Metrics -->
-                            <div class="flex flex-wrap gap-4 mb-5 text-sm">
+                            {{-- <div class="flex flex-wrap gap-4 mb-5 text-sm">
                                 <span class="flex items-center bg-gray-100/70 px-3 py-1 rounded-full">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-yellow-500"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -732,7 +732,7 @@
                                     </svg>
                                     {{ $publication->citation_count ?? 0 }} Citations
                                 </span>
-                            </div>
+                            </div> --}}
 
                             <!-- Abstract with read more toggle -->
                             <div x-data="{ expanded: false }" class="mb-6">
@@ -754,7 +754,7 @@
 
                             <!-- Action buttons -->
                             <div class="flex gap-3">
-                                <a href="{{ $publication['pdf_url'] }}"
+                                <a href="{{ $publication->pdf_url }}"
                                     class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-4 py-2.5 rounded-lg hover:from-blue-700 hover:to-blue-600 transition-all duration-200 shadow-md hover:shadow-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -763,7 +763,7 @@
                                     </svg>
                                     PDF
                                 </a>
-                                <a href="https://doi.org/{{ $publication['doi'] }}" target="_blank"
+                                <a href="https://doi.org/{{ $publication->doi }}" target="_blank"
                                     class="flex-1 flex items-center justify-center gap-2 border border-gray-300 text-gray-700 px-4 py-2.5 rounded-lg hover:border-purple-500 hover:text-purple-600 hover:bg-purple-50 transition-all duration-200">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -835,7 +835,7 @@
                         <div class="p-6">
                             <h3
                                 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
-                                {{ $program['title'] }}
+                                {{ $program->title }}
                             </h3>
                             <p class="text-gray-600 mb-4 line-clamp-2">
                                 {{ $program['description'] }}

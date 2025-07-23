@@ -30,12 +30,17 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
+        // Gabungkan pengalaman menjadi satu string sebelum validasi
+        $request->merge([
+            'experience' => $request->input('experience_years') . ' tahun di ' . $request->input('experience_field')
+        ]);
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'position' => 'required|string|max:255',
             'specialization' => 'required|string|max:255',
             'education' => 'required|string',
-            'experience' => 'required|integer|min:0',
+            'experience' => 'required|string|max:255', // Ubah ke string, karena formatnya sekarang seperti "3 tahun di AI Development"
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'bio' => 'required|string',
             'email' => 'required|email|max:255',
@@ -53,8 +58,9 @@ class TeamController extends Controller
         TeamMember::create($validated);
 
         return redirect()->route('team-member.index')
-            ->with('success', 'Research product created successfully.');
+            ->with('success', 'Team Member created successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -101,14 +107,14 @@ class TeamController extends Controller
                 Storage::disk('public')->delete($oldImage);
             }
 
-            $imagePath = $request->file('image')->store('research-teams', 'public');
+            $imagePath = $request->file('image')->store('team-member', 'public');
             $validated['image'] = '/storage/' . $imagePath;
         }
 
         $team->update($validated);
 
-        return redirect()->route('research-teams.index')
-            ->with('success', 'Research team updated successfully.');
+        return redirect()->route('team-member.index')
+            ->with('success', 'Team updated successfully.');
     }
 
     /**
@@ -126,6 +132,6 @@ class TeamController extends Controller
         $team->delete();
 
         return redirect()->route('team-member.index')
-        ->with('success', 'Research team deleted successfully.');
+            ->with('success', 'Team deleted successfully.');
     }
 }

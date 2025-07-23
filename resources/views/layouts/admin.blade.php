@@ -28,6 +28,11 @@
                         <i class="fas fa-book mr-2"></i> Pengabdian
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('team-member.index') }}" class="block px-4 py-2 rounded hover:bg-gray-700 {{ request()->is('admin/team-member*') ? 'bg-gray-700' : '' }}">
+                        <i class="fas fa-book mr-2"></i> Team
+                    </a>
+                </li>
             </ul>
         </div>
 
