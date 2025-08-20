@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Filament overrides */
+:root {
+    --primary-500: #f59e0b; /* Amber */
+}

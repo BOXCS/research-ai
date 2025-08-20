@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Models/User.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1755700618498,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1755700618498,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Filament\\Models\\Contracts\\FilamentUser;\nuse Filament\\Panel;\nuse Illuminate\\Foundation\\Auth\\User as Authenticatable;\nuse Illuminate\\Notifications\\Notifiable;\n\nclass User extends Authenticatable implements FilamentUser\n{\n    use Notifiable;\n\n    protected $fillable = [\n        'name',\n        'email',\n        'password',\n    ];\n\n    protected $hidden = [\n        'password',\n        'remember_token',\n    ];\n\n    // Aturan siapa yang bisa login ke Filament\n    public function canAccessPanel(Panel $panel): bool\n    {\n        // contoh: hanya email tertentu\n        // return str_ends_with($this->email, '@gmail.com');\n\n        // kalau semua user boleh login:\n        return true;\n    }\n}\n"
+        }
+    ]
+}
