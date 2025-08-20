@@ -474,14 +474,14 @@
     </section>
 
     <!-- About Mission Section -->
-    <section id="about-mission" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Parallax Background -->
+    <section id="about-mission" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div class="parallax-bg absolute inset-0 bg-gray-900 z-0"></div>
 
         <!-- Content Container -->
-        <div class="relative z-10 max-w-5xl mx-auto px-6 py-16 text-center">
+        <div
+            class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-16 text-center flex flex-col items-center justify-center">
             <div class="mission-content opacity-0 transform translate-y-10 transition-all duration-1000">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8">
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Our
                         Purpose</span>
                     <span class="block text-black">Driving Innovation Through AI</span>
@@ -531,8 +531,8 @@
                         combines cutting-edge technical research with deep consideration of societal impacts.
                     </p>
                     <div class="flex justify-center">
-                        <a href="#research"
-                            class="scroll-to-research inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                        <a href="{{ route('research-products.index') }}"
+                            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
                             Explore Our Research
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"
                                 fill="currentColor">
@@ -541,6 +541,7 @@
                                     clip-rule="evenodd" />
                             </svg>
                         </a>
+
                     </div>
                 </div>
             </div>
@@ -578,7 +579,7 @@
                         <!-- Image with gradient overlay -->
                         <div class="relative h-56 overflow-hidden">
                             <img src="{{ asset($product->image) }}" alt="{{ $product->title }}">
-                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
 
                             <!-- Badges -->
@@ -604,8 +605,10 @@
                             </p>
 
                             <div class="flex items-center text-sm text-gray-500 mb-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
                                 {{ $product->tgl_mulai->format('M Y') }} - {{ $product->tgl_selesai->format('M Y') }}
                             </div>
@@ -692,7 +695,7 @@
                                 <div>
                                     <span
                                         class="px-3 py-1 bg-blue-100/80 text-blue-800 text-xs font-semibold rounded-full backdrop-blur-sm">
-                                        {{ ($publication->category)->name ?? 'Uncategorized' }}
+                                        {{ $publication->category->name ?? 'Uncategorized' }}
                                     </span>
                                 </div>
                             </div>
@@ -819,7 +822,7 @@
                         class="group relative bg-white bg-opacity-70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-white border-opacity-50 transition-all duration-300 hover:shadow-2xl hover:border-opacity-80 hover:bg-opacity-90 hover:-translate-y-2">
                         <!-- Image with overlay -->
                         <div class="relative h-56 overflow-hidden">
-                            <img src="{{ $program['image'] }}" alt="{{ $program['title'] }}"
+                            <img src="{{ $program['image'] }}" alt="{{ $program->title }}"
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
 
@@ -1451,6 +1454,8 @@
     </div>
 
     <!-- JavaScript -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
+
     <script>
         // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {

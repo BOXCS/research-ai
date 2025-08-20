@@ -115,8 +115,12 @@ class PengabdianController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $pengabdian = CommunityService::findOrFail($id);
+        $pengabdian->delete();
+
+        return redirect()->route('pengabdians.index')
+                         ->with('success', 'Pengabdian deleted successfully.');
     }
 }

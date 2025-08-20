@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\LandingController::class, 'index'])->name('home');
 
+Route::get('/tes-admin', function () {
+    return 'Route Tes OK';
+});
+
+
 Route::prefix('admin/research-products')->group(function () {
     Route::get('/', [ResearchProductController::class, 'index'])->name('research-products.index');
     Route::get('/create', [ResearchProductController::class, 'create'])->name('research-products.create');
