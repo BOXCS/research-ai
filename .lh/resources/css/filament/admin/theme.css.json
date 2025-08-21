@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1755701045864,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1755702093748,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,3 @@\n-@tailwind base;\n-@tailwind components;\n-@tailwind utilities;\n+@import '../../../../vendor/filament/filament/resources/css/theme.css';\n \n-/* Custom Filament overrides */\n-:root {\n-    --primary-500: #f59e0b; /* Amber */\n-}\n+@config 'tailwind.config.js';\n"
                 }
             ],
             "date": 1755701045864,

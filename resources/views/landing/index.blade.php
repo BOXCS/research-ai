@@ -434,11 +434,8 @@
                             class="absolute inset-0 bg-white bg-opacity-5 backdrop-blur-md rounded-2xl border border-white border-opacity-10 shadow-2xl overflow-hidden">
                             <!-- Placeholder for 3D illustration - in practice you would use an actual 3D model or high-quality illustration -->
                             <div class="w-full h-full flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-64 w-64 text-blue-400 opacity-70"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                </svg>
+                                <img src="{{ asset('images/research-logo.svg') }}" alt="Research Logo"
+                                    class="h-80 w-80 opacity-70" />
                             </div>
                         </div>
 
@@ -531,7 +528,7 @@
                         combines cutting-edge technical research with deep consideration of societal impacts.
                     </p>
                     <div class="flex justify-center">
-                        <a href="{{ route('research-products.index') }}"
+                        <a href="{{ route('filament.admin.resources.research-products.index') }}"
                             class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
                             Explore Our Research
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"

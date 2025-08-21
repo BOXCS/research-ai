@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1755700618498,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1755702297386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,14 +3,17 @@\n namespace App\\Models;\n \n use Filament\\Models\\Contracts\\FilamentUser;\n use Filament\\Panel;\n+use Illuminate\\Contracts\\Auth\\MustVerifyEmail;\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n use Illuminate\\Foundation\\Auth\\User as Authenticatable;\n use Illuminate\\Notifications\\Notifiable;\n+use Laravel\\Sanctum\\HasApiTokens;\n \n class User extends Authenticatable implements FilamentUser\n {\n-    use Notifiable;\n+    use HasApiTokens, HasFactory, Notifiable;\n \n     protected $fillable = [\n         'name',\n         'email',\n@@ -21,14 +24,13 @@\n         'password',\n         'remember_token',\n     ];\n \n-    // Aturan siapa yang bisa login ke Filament\n+    protected $casts = [\n+        'email_verified_at' => 'datetime',\n+    ];\n+\n     public function canAccessPanel(Panel $panel): bool\n     {\n-        // contoh: hanya email tertentu\n-        // return str_ends_with($this->email, '@gmail.com');\n-\n-        // kalau semua user boleh login:\n-        return true;\n+        return str_ends_with($this->email, '@gmail.com');\n     }\n-}\n+}\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1755700618498,

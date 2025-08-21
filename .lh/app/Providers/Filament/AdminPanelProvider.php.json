@@ -3,11 +3,19 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1755701070446,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1755701982059,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n <?php\n \n namespace App\\Providers\\Filament;\n \n+use DiogoGPinto\\AuthUIEnhancer\\AuthUIEnhancerPlugin;\n use Filament\\Http\\Middleware\\Authenticate;\n use Filament\\Http\\Middleware\\AuthenticateSession;\n use Filament\\Http\\Middleware\\DisableBladeIconComponents;\n use Filament\\Http\\Middleware\\DispatchServingFilamentEvent;\n@@ -40,8 +41,11 @@\n             ->widgets([\n                 Widgets\\AccountWidget::class,\n                 Widgets\\FilamentInfoWidget::class,\n             ])\n+            ->plugins([\n+                AuthUIEnhancerPlugin::make(),\n+            ])\n             ->middleware([\n                 EncryptCookies::class,\n                 AddQueuedCookiesToResponse::class,\n                 StartSession::class,\n"
+                },
+                {
+                    "date": 1755702118018,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,9 @@\n             ->default()\n             ->id('admin')\n             ->path('admin')\n             ->login()\n+            ->registration()\n             ->viteTheme('resources/css/filament/admin/theme.css')\n             ->colors([\n                 'primary' => Color::Amber,\n             ])\n"
                 }
             ],
             "date": 1755701070446,
