@@ -22,7 +22,7 @@ class Publication extends Model
         'citation_count',
         'abstract',
         'pdf_url',
-        'category_id', // ganti dari 'category'
+        'category_id',
     ];
 
     public function category()

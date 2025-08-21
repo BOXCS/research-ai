@@ -12,7 +12,7 @@ class ResearchProduct extends Model
     protected $fillable = [
         'title',
         'description',
-        'category_id', // ganti dari 'category'
+        'category_id',
         'status',
         'tgl_mulai',
         'tgl_selesai',

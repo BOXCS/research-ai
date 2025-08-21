@@ -24,17 +24,21 @@ class TeamMemberResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->label('Nama')
+                    ->placeholder('Masukkan nama lengkap')
                     ->required(),
 
                 Forms\Components\TextInput::make('position')
                     ->label('Posisi')
+                    ->placeholder('Contoh: Lektor Kepala, Tim Developer, Tim Desain')
                     ->required(),
 
                 Forms\Components\TextInput::make('specialization')
-                    ->label('Spesialisasi'),
+                    ->label('Spesialisasi')
+                    ->placeholder('Contoh: Web Development'),
 
                 Forms\Components\TextInput::make('education')
-                    ->label('Pendidikan'),
+                    ->label('Pendidikan')
+                    ->placeholder('Contoh: S3'),
 
                 Forms\Components\Fieldset::make('Pengalaman')
                     ->schema([
@@ -42,26 +46,33 @@ class TeamMemberResource extends Resource
                             ->numeric()
                             ->minValue(0)
                             ->maxValue(100)
-                            ->label('Tahun'),
+                            ->label('Tahun')
+                            ->placeholder('Contoh: 5'),
                         Forms\Components\TextInput::make('experience_field')
-                            ->label('Bidang'),
+                            ->label('Bidang')
+                            ->placeholder('Contoh: Web Development'),
                     ])
                     ->columns(2),
 
                 Forms\Components\TextInput::make('email')
-                    ->email(),
+                    ->email()
+                    ->placeholder('contoh@email.com'),
 
                 Forms\Components\TextInput::make('linkedin')
-                    ->url(),
+                    ->url()
+                    ->placeholder('https://linkedin.com/in/...'),
 
                 Forms\Components\TextInput::make('google_scholar')
-                    ->url(),
+                    ->url()
+                    ->placeholder('https://scholar.google.com/...'),
 
                 Forms\Components\TextInput::make('publications')
-                    ->label('Publikasi'),
+                    ->label('Publikasi')
+                    ->placeholder('Jumlah publikasi'),
 
                 Forms\Components\TextInput::make('h_index')
-                    ->label('H-Index'),
+                    ->label('H-Index')
+                    ->placeholder('Contoh: 10'),
 
                 Forms\Components\FileUpload::make('image')
                     ->image()
@@ -70,7 +81,8 @@ class TeamMemberResource extends Resource
 
                 Forms\Components\Textarea::make('bio')
                     ->label('Bio')
-                    ->rows(5),
+                    ->rows(5)
+                    ->placeholder('Tuliskan deskripsi singkat tentang anggota tim'),
             ])
             ->columns(2);
     }

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Filament/Resources/TeamMemberResource/Pages/EditTeamMember.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1755750809638,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1755750809638,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Filament\\Resources\\TeamMemberResource\\Pages;\n\nuse App\\Filament\\Resources\\TeamMemberResource;\nuse Filament\\Actions;\nuse Filament\\Resources\\Pages\\EditRecord;\n\nclass EditTeamMember extends EditRecord\n{\n    protected static string $resource = TeamMemberResource::class;\n\n    protected function mutateFormDataBeforeSave(array $data): array\n    {\n        // gabungkan pengalaman\n        if (!empty($data['experience_years']) || !empty($data['experience_field'])) {\n            $years = $data['experience_years'] ?? 0;\n            $field = $data['experience_field'] ?? '';\n            $data['experience'] = \"{$years} tahun di {$field}\";\n        }\n\n        return $data;\n    }\n\n    protected function getHeaderActions(): array\n    {\n        return [\n            Actions\\DeleteAction::make(),\n        ];\n    }\n}\n"
+        }
+    ]
+}
