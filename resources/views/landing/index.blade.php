@@ -31,8 +31,12 @@
             font-family: 'Inter', sans-serif;
         }
 
+        body {
+            scroll-behavior: smooth;
+        }
+
         .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #556b2f 0%, #6b8e23 100%);
         }
 
         .card-hover {
@@ -60,8 +64,20 @@
             }
         }
 
+        .forest-green-gradient {
+            background: linear-gradient(135deg, #2c4e1d 0%, #3b6e2f 100%);
+        }
+
+        .floating-card {
+            transition: transform 0.3s ease;
+        }
+
+        .floating-card:hover {
+            transform: translateY(-5px);
+        }
+
         .text-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #556b2f 0%, #6b8e23 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -75,12 +91,17 @@
 
             0%,
             100% {
-                box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+                box-shadow: 0 0 5px rgba(85, 107, 47, 0.5);
             }
 
             50% {
-                box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+                box-shadow: 0 0 20px rgba(107, 142, 35, 0.8);
             }
+        }
+
+        .logo-team svg path {
+            fill: #a8d08d;
+            /* hijau terang */
         }
 
         .parallax-bg {
@@ -98,11 +119,11 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(34, 49, 0, 0.85);
         }
 
         .modal-content {
-            background-color: #fefefe;
+            background-color: #f5f9f0;
             margin: 5% auto;
             padding: 0;
             border-radius: 10px;
@@ -152,7 +173,7 @@
 
         .scroll-progress {
             height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, #556b2f, #6b8e23);
             width: 0%;
             transition: width 0.3s ease;
         }
@@ -196,7 +217,7 @@
         .mouse {
             width: 25px;
             height: 40px;
-            border: 2px solid white;
+            border: 2px solid #c0d9af;
             border-radius: 12px;
             display: flex;
             justify-content: center;
@@ -206,7 +227,7 @@
         .wheel {
             width: 4px;
             height: 8px;
-            background-color: white;
+            background-color: #c0d9af;
             border-radius: 2px;
             animation: scroll-wheel 2s infinite;
         }
@@ -233,8 +254,8 @@
         .arrow-down {
             width: 10px;
             height: 10px;
-            border-right: 2px solid white;
-            border-bottom: 2px solid white;
+            border-right: 2px solid #c0d9af;
+            border-bottom: 2px solid #c0d9af;
             transform: rotate(45deg);
             animation: arrow-pulse 2s infinite;
         }
@@ -317,7 +338,7 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <h1 class="text-2xl font-bold text-gradient">Research AI</h1>
+                        <h1 class="text-2xl font-bold text-gradient">research-ai.my.id</h1>
                     </div>
                 </div>
 
@@ -364,93 +385,77 @@
     <!-- Hero Section -->
     <!-- Hero Section dengan 3D Illustration -->
     <section id="hero"
-        class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-blue-900 relative overflow-hidden">
+        class="min-h-screen flex items-center justify-center forest-green-gradient relative overflow-hidden">
         <!-- Background Shapes -->
-        <div class="absolute top-0 left-0 w-full h-full opacity-20">
-            <div class="absolute top-10 left-10 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl"></div>
-            <div class="absolute bottom-10 right-10 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl"></div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-15">
+            <div class="absolute top-10 left-10 w-64 h-64 bg-[#2c4e1d] rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-64 h-64 bg-[#3b6e2f] rounded-full filter blur-3xl"></div>
         </div>
 
         <div class="relative z-10 container mx-auto px-6 py-16 md:py-24">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2">
                     <span
-                        class="inline-block px-4 py-2 bg-white bg-opacity-10 text-blue-300 rounded-full text-sm font-medium mb-6 border border-white border-opacity-20">
-                        AI Research Lab
+                        class="inline-block px-4 py-2 bg-white bg-opacity-10 text-green-200 rounded-full text-sm font-medium mb-6 border border-white border-opacity-10">
+                        research-ai.my.id
                     </span>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Innovating</span>
-                        <span class="block">With Intelligence</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#a8d08d] to-[#8db665]">Academy
+                            Industrial</span>
+                        <span class="block">Research on Intelegence System</span>
                     </h1>
-                    <p class="text-xl text-gray-300 mb-8 max-w-xl">
-                        Menyelami dunia AI dengan cinta dan keterampilan. Saya adalah seorang peneliti AI yang
-                        bersemangat tentang pengembangan teknologi untuk masa depan yang lebih cerdas dan berkelanjutan.
-                        Bergabunglah dalam perjalanan saya untuk menjelajahi keajaiban kecerdasan buatan!
+                    <p class="text-xl text-gray-200 mb-8 max-w-xl">
+                        Selamat datang di halaman resmi <strong>Dr. Denny Trias Utomo, S.Si, MT</strong>, seorang
+                        akademisi, peneliti, dan inovator teknologi dari Politeknik Negeri Jember. Dengan pengalaman
+                        lebih dari dua dekade di bidang <strong>Sistem Cerdas, IoT, dan Teknologi Informasi</strong>,
+                        beliau telah memimpin berbagai proyek penelitian dan pengabdian masyarakat yang mengubah wajah
+                        pendidikan, pertanian, energi, dan kesehatan berbasis teknologi tepat guna.
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#research"
-                            class="flex items-center justify-center gap-2 bg-white text-blue-900 px-6 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-[1.02] shadow-lg">
+                            class="flex items-center justify-center gap-2 bg-white text-green-900 px-6 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-[1.02] shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                     clip-rule="evenodd" />
                             </svg>
-                            Explore Research
+                            Jelajahi Penelitian
                         </a>
-                        <a href="#team"
-                            class="flex items-center justify-center gap-2 border-2 border-white text-white px-6 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:scale-[1.02]">
+                        <a href="#contact"
+                            class="flex items-center justify-center gap-2 border-2 border-white text-white px-6 py-4 rounded-lg font-semibold hover:bg-white hover:text-green-900 transition-all duration-300 transform hover:scale-[1.02]">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                 fill="currentColor">
-                                <path
-                                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z" />
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                             </svg>
-                            Meet Our Team
+                            Hubungi Saya
                         </a>
                     </div>
-
-                    {{-- <div class="mt-12 flex items-center gap-4">
-                        <div class="flex -space-x-3">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg"
-                                class="w-10 h-10 rounded-full border-2 border-white" alt="Team member">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg"
-                                class="w-10 h-10 rounded-full border-2 border-white" alt="Team member">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg"
-                                class="w-10 h-10 rounded-full border-2 border-white" alt="Team member">
-                        </div>
-                        <div class="text-gray-300">
-                            <div class="font-medium">Join 50+ Researchers</div>
-                            <div class="text-sm">Collaborating on breakthrough projects</div>
-                        </div>
-                    </div> --}}
                 </div>
 
                 <div class="lg:w-1/2 relative">
                     <div class="relative w-full h-96 lg:h-[500px]">
-                        <!-- 3D Illustration Container -->
                         <div
-                            class="absolute inset-0 bg-white bg-opacity-5 backdrop-blur-md rounded-2xl border border-white border-opacity-10 shadow-2xl overflow-hidden">
-                            <!-- Placeholder for 3D illustration - in practice you would use an actual 3D model or high-quality illustration -->
+                            class="absolute inset-0 bg-black bg-opacity-10 backdrop-blur-md rounded-2xl border border-black border-opacity-10 shadow-2xl overflow-hidden">
                             <div class="w-full h-full flex items-center justify-center">
-                                <img src="{{ asset('images/research-logo.svg') }}" alt="Research Logo"
-                                    class="h-80 w-80 opacity-70" />
+                                <img src="{{ asset('images/research-logo-green.svg') }}" class="logo-team h-80 w-80" alt="Team Logo">
                             </div>
                         </div>
 
-                        <!-- Floating cards around the illustration -->
+                        <!-- Floating cards -->
                         <div
-                            class="absolute -top-6 -left-6 w-32 h-32 bg-blue-600 bg-opacity-20 rounded-xl border border-blue-400 border-opacity-30 backdrop-blur-sm p-4 transform rotate-6">
-                            <div class="text-white text-sm font-medium">Neural Networks</div>
+                            class="absolute -top-6 -left-6 w-32 h-32 bg-[#2c4e1d] bg-opacity-25 rounded-xl border border-[#2c4e1d] border-opacity-30 backdrop-blur-sm p-4 transform rotate-6 floating-card">
+                            <div class="text-white text-sm font-medium">Sistem Cerdas</div>
                         </div>
                         <div
-                            class="absolute -bottom-6 -right-6 w-32 h-32 bg-purple-600 bg-opacity-20 rounded-xl border border-purple-400 border-opacity-30 backdrop-blur-sm p-4 transform -rotate-6">
-                            <div class="text-white text-sm font-medium">Computer Vision</div>
+                            class="absolute -bottom-6 -right-6 w-32 h-32 bg-[#3b6e2f] bg-opacity-25 rounded-xl border border-[#3b6e2f] border-opacity-30 backdrop-blur-sm p-4 transform -rotate-6 floating-card">
+                            <div class="text-white text-sm font-medium">IoT</div>
                         </div>
                         <div
-                            class="absolute top-1/4 -right-10 w-28 h-28 bg-green-600 bg-opacity-20 rounded-xl border border-green-400 border-opacity-30 backdrop-blur-sm p-4 transform rotate-12">
-                            <div class="text-white text-sm font-medium">NLP</div>
+                            class="absolute top-1/4 -right-10 w-28 h-28 bg-[#2c4e1d] bg-opacity-25 rounded-xl border border-[#2c4e1d] border-opacity-30 backdrop-blur-sm p-4 transform rotate-12 floating-card">
+                            <div class="text-white text-sm font-medium">AI Research</div>
                         </div>
                     </div>
                 </div>
@@ -469,6 +474,79 @@
             </div>
         </div>
     </section>
+
+    <!-- Additional Content (Placeholder) -->
+    <section class="py-20 px-6 bg-[#1f3a14]">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-green-200 mb-12">Tentang Dr. Denny Trias Utomo
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-[#2c4e1d] bg-opacity-80 p-6 rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center rounded-full bg-green-600 text-white mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-3-3v6" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-green-100">Pendekatan Multidisipliner</h3>
+                    </div>
+                    <p class="text-gray-200 text-sm">Menghadirkan solusi berbasis data, sistem pakar, dan kecerdasan
+                        buatan untuk menjawab tantangan nyata masyarakat.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-[#2c4e1d] bg-opacity-80 p-6 rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center rounded-full bg-green-600 text-white mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 7h18M3 12h18M3 17h18" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-green-100">Proyek Smart Village & AI</h3>
+                    </div>
+                    <p class="text-gray-200 text-sm">Dari alat diagnosis cerdas pertanian & peternakan, hingga sistem
+                        pendukung keputusan berbasis machine learning.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-[#2c4e1d] bg-opacity-80 p-6 rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center rounded-full bg-green-600 text-white mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8c1.657 0 3-1.343 3-3S13.657 2 12 2 9 3.343 9 5s1.343 3 3 3zM6 20h12v-2a4 4 0 00-4-4H10a4 4 0 00-4 4v2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-green-100">Transformasi Digital</h3>
+                    </div>
+                    <p class="text-gray-200 text-sm">Semua proyek dan inovasi ditujukan untuk mewujudkan transformasi
+                        digital inklusif yang berdampak positif bagi masyarakat.</p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="mt-12 text-center">
+                <a href="#research"
+                    class="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Jelajahi Karya & Publikasi
+                </a>
+            </div>
+        </div>
+    </section>
+
 
     <!-- About Mission Section -->
     <section id="about-mission" class="relative min-h-screen flex items-center justify-center overflow-hidden">
