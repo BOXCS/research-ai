@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 6,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1755729941036,
@@ -32,6 +32,14 @@
                 {
                     "date": 1755751118729,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,30 +54,36 @@\n                     ])\n                     ->columns(2),\n \n                 Forms\\Components\\TextInput::make('email')\n-                    ->email(),\n+                    ->email()\n+                    ->placeholder('contoh@email.com'),\n \n                 Forms\\Components\\TextInput::make('linkedin')\n-                    ->url(),\n+                    ->url()\n+                    ->placeholder('https://linkedin.com/in/...'),\n \n                 Forms\\Components\\TextInput::make('google_scholar')\n-                    ->url(),\n+                    ->url()\n+                    ->placeholder('https://scholar.google.com/...'),\n \n                 Forms\\Components\\TextInput::make('publications')\n-                    ->label('Publikasi'),\n+                    ->label('Publikasi')\n+                    ->placeholder('Jumlah publikasi'),\n \n                 Forms\\Components\\TextInput::make('h_index')\n-                    ->label('H-Index'),\n+                    ->label('H-Index')\n+                    ->placeholder('Contoh: 10'),\n \n                 Forms\\Components\\FileUpload::make('image')\n                     ->image()\n                     ->directory('team-members')\n                     ->maxSize(2048),\n \n                 Forms\\Components\\Textarea::make('bio')\n                     ->label('Bio')\n-                    ->rows(5),\n+                    ->rows(5)\n+                    ->placeholder('Tuliskan deskripsi singkat tentang anggota tim'),\n             ])\n             ->columns(2);\n     }\n \n"
+                },
+                {
+                    "date": 1755752076732,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,8 +76,9 @@\n \n                 Forms\\Components\\FileUpload::make('image')\n                     ->image()\n                     ->directory('team-members')\n+                    ->disk('public')\n                     ->maxSize(2048),\n \n                 Forms\\Components\\Textarea::make('bio')\n                     ->label('Bio')\n"
+                },
+                {
+                    "date": 1755752110592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,10 @@\n         return $table\n             ->columns([\n                 Tables\\Columns\\ImageColumn::make('image')\n                     ->label('Foto')\n-                    ->circular(),\n+                    ->circular()\n+                    ->disk('public'),\n                 Tables\\Columns\\TextColumn::make('name')\n                     ->searchable()\n                     ->sortable(),\n                 Tables\\Columns\\TextColumn::make('position'),\n"
                 }
             ],
             "date": 1755729941036,

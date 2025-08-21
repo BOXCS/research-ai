@@ -955,8 +955,9 @@
                         class="group relative bg-white bg-opacity-70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-white border-opacity-50 transition-all duration-300 hover:shadow-2xl hover:border-opacity-80 hover:bg-opacity-90 hover:-translate-y-2">
                         <!-- Profile image with overlay -->
                         <div class="relative h-72 overflow-hidden">
-                            <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}"
+                            <img src="{{ asset('storage/' . $member['image']) }}" alt="{{ $member['name'] }}"
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent">
                             </div>

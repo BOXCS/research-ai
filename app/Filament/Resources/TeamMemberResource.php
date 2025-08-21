@@ -77,6 +77,7 @@ class TeamMemberResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->directory('team-members')
+                    ->disk('public')
                     ->maxSize(2048),
 
                 Forms\Components\Textarea::make('bio')
@@ -93,7 +94,8 @@ class TeamMemberResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Foto')
-                    ->circular(),
+                    ->circular()
+                    ->disk('public'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
