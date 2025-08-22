@@ -471,7 +471,7 @@
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <div id="scroll-indicator" class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
             <div class="flex flex-col items-center">
                 <span class="text-sm text-white mb-2">Scroll Down</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white animate-bounce" fill="none"
@@ -1650,13 +1650,13 @@
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">${product.title}</h3>
                 <img src="${product.image}" alt="${product.title}" class="w-full h-64 object-cover rounded-lg mb-4">
                 <div class="flex items-center gap-4 mb-4">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">${product.category}</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">{{ optional($product->category)->name }}</span>
                     <span class="px-3 py-1 ${product.status === 'Active' ? 'bg-green-100 text-green-800' : product.status === 'Completed' ? 'bg-blue-100 text-blue-800' : 'bg-orange-100 text-orange-800'} rounded-full text-sm">${product.status}</span>
                 </div>
                 <p class="text-gray-600 mb-4">${product.description}</p>
                 <div class="bg-gray-50 p-4 rounded-lg">
                     <h4 class="font-semibold text-gray-900 mb-2">Project Duration</h4>
-                    <p class="text-gray-600">${product.duration}</p>
+                    <p class="text-gray-600">{{ $product->tgl_mulai->format('M Y') }} - {{ $product->tgl_selesai->format('M Y') }}</p>
                 </div>
             `;
 
@@ -1827,7 +1827,7 @@
             const missionContent = document.querySelector('.mission-content');
 
             // Scroll indicator dari hero section
-            const scrollIndicator = document.querySelector('#hero .flex.flex-col.items-center');
+            const scrollIndicator = document.querySelector('#scroll-indicator .flex.flex-col.items-center');
 
             if (scrollIndicator) {
                 scrollIndicator.addEventListener('click', function(e) {
