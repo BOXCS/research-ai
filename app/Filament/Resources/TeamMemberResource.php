@@ -41,19 +41,20 @@ class TeamMemberResource extends Resource
                     ->label('Pendidikan')
                     ->placeholder('Contoh: S3'),
 
-                Forms\Components\Fieldset::make('Pengalaman')
-                    ->schema([
-                        Forms\Components\TextInput::make('experience_years')
-                            ->numeric()
-                            ->minValue(0)
-                            ->maxValue(100)
-                            ->label('Tahun')
-                            ->placeholder('Contoh: 5'),
-                        Forms\Components\TextInput::make('experience_field')
-                            ->label('Bidang')
-                            ->placeholder('Contoh: Web Development'),
-                    ])
-                    ->columns(2),
+                    Forms\Components\TextInput::make('experience_years')
+                    ->numeric()
+                    ->minValue(0)
+                    ->maxValue(100)
+                    ->label('Tahun Pengalaman')
+                    ->placeholder('Contoh: 5')
+                    ->dehydrateStateUsing(fn ($state) => $state ? "{$state} Tahun Pengalaman" : null)
+                    ->afterStateHydrated(function ($component, $state) {
+                        // Supaya saat edit, hanya angka tahun yang muncul
+                        if ($state && preg_match('/(\d+)/', $state, $matches)) {
+                            $component->state($matches[1]);
+                        }
+                    })
+                    ->required(),                
 
                 Forms\Components\TextInput::make('email')
                     ->email()
