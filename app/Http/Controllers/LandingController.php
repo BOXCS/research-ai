@@ -32,8 +32,8 @@ class LandingController extends Controller
             ->get();
 
         // Tim terbaru (opsional)
-        $teamMembers = TeamMember::latest()
-            ->get();
+        $teamMembers = TeamMember::orderBy('created_at', 'asc')
+        ->get();
 
 
         return view('landing.index', compact(
