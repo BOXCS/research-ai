@@ -111,6 +111,7 @@ class TeamMemberResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->copyable(),
             ])
+            ->reorderable('priority')
             ->filters([])
             ->actions([
                 Tables\Actions\ViewAction::make(),

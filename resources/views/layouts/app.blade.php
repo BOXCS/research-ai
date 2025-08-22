@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'Research Website') }}</title>
 
+    <!-- SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('research-logo-green.svg') }}">
+
+    <!-- Fallback PNG untuk browser lama -->
+    <link rel="alternate icon" href="{{ asset('research-logo-green.png') }}" type="image/png">
+
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gradient-to-b from-green-50 to-emerald-100 min-h-screen flex flex-col">

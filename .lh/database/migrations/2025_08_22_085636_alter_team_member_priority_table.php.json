@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/migrations/2025_08_22_085636_alter_team_member_priority_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1755853009365,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1755853009365,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    public function up(): void\n    {\n        Schema::table('team_members', function (Blueprint $table) {\n            $table->integer('priority')->default(0)->after('h_index')->comment('Prioritas tampilan, semakin tinggi semakin di atas');\n        });\n    }\n\n    public function down(): void\n    {\n        Schema::table('team_members', function (Blueprint $table) {\n            $table->dropColumn('priority');\n        });\n    }\n};\n"
+        }
+    ]
+}
