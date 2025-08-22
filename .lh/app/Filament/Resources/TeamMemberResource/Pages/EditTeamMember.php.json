@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1755750809638,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1755903786934,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,10 +14,9 @@\n     {\n         // gabungkan pengalaman\n         if (!empty($data['experience_years']) || !empty($data['experience_field'])) {\n             $years = $data['experience_years'] ?? 0;\n-            $field = $data['experience_field'] ?? '';\n-            $data['experience'] = \"{$years} tahun di {$field}\";\n+            $data['experience'] = \"{$years}\";\n         }\n \n         return $data;\n     }\n"
                 }
             ],
             "date": 1755750809638,

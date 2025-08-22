@@ -32,7 +32,7 @@ class TeamController extends Controller
     {
         // Gabungkan pengalaman menjadi satu string sebelum validasi
         $request->merge([
-            'experience' => $request->input('experience_years') . ' tahun di ' . $request->input('experience_field')
+            'experience' => $request->input('experience_years')
         ]);
 
         $validated = $request->validate([

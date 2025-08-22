@@ -15,8 +15,7 @@ class EditTeamMember extends EditRecord
         // gabungkan pengalaman
         if (!empty($data['experience_years']) || !empty($data['experience_field'])) {
             $years = $data['experience_years'] ?? 0;
-            $field = $data['experience_field'] ?? '';
-            $data['experience'] = "{$years} tahun di {$field}";
+            $data['experience'] = "{$years}";
         }
 
         return $data;
