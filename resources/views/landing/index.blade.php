@@ -777,7 +777,7 @@
                                     </h3>
                                     <p class="text-gray-600 text-sm mb-3">
                                         {{ implode(', ', $publication->author_names) }}
-                                    </p>                                    
+                                    </p>
                                 </div>
                                 <div>
                                     <span
@@ -1696,7 +1696,12 @@
         <p class="text-gray-600 mb-4">${product.description}</p>
         <div class="bg-gray-50 p-4 rounded-lg">
             <h4 class="font-semibold text-gray-900 mb-2">Project Duration</h4>
-            <p class="text-gray-600">${product.tgl_mulai} - ${product.tgl_selesai}</p>
+            <p class="text-gray-600">
+  ${new Date(product.tgl_mulai).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })} 
+  - 
+  ${new Date(product.tgl_selesai).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}
+</p>
+
         </div>
     `;
 
