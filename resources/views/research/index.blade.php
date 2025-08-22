@@ -155,7 +155,7 @@
 
         content.innerHTML = `
         <h3 class="text-2xl font-bold text-gray-900 mb-4">${product.title}</h3>
-        <img src="${product.image}" alt="${product.title}" class="w-full h-64 object-cover rounded-lg mb-4">
+        <img src="/storage/${product.image}" alt="${product.title}" class="w-full h-64 object-cover rounded-lg mb-4">
         <p class="text-gray-600 mb-4">${product.description}</p>
     `;
 

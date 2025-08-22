@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 7,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1755817604579,
@@ -36,6 +36,10 @@
                 {
                     "date": 1755818389320,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -135,13 +135,13 @@\n         modal.classList.remove('hidden');\r\n     }\r\n \r\n     function extractYouTubeID(url) {\r\n-            // Match various YouTube URL formats\r\n-            const regex = /(?:youtube\\.com\\/(?:watch\\?v=|embed\\/|shorts\\/)|youtu\\.be\\/)([a-zA-Z0-9_-]{11})/;\r\n-            const match = url.match(regex);\r\n-            return match ? match[1] : null;\r\n-        }\r\n+        // Match various YouTube URL formats\r\n+        const regex = /(?:youtube\\.com\\/(?:watch\\?v=|embed\\/|shorts\\/)|youtu\\.be\\/)([a-zA-Z0-9_-]{11})/;\r\n+        const match = url.match(regex);\r\n+        return match ? match[1] : null;\r\n+    }\r\n \r\n     function closeVideoModal() {\r\n         const modal = document.getElementById('videoModal');\r\n         const videoContainer = document.getElementById('videoContainer');\r\n@@ -172,9 +172,9 @@\n         const modals = ['videoModal', 'detailsModal'];\r\n         modals.forEach(modalId => {\r\n             const modal = document.getElementById(modalId);\r\n             if (event.target === modal) {\r\n-                modal.style.display = 'none';\r\n+                modal.classList.add('hidden');\r\n                 if (modalId === 'videoModal') {\r\n                     document.getElementById('videoContainer').innerHTML = '';\r\n                 }\r\n             }\r\n"
+                },
+                {
+                    "date": 1755832476137,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -154,9 +154,9 @@\n         const content = document.getElementById('detailsContent');\r\n \r\n         content.innerHTML = `\r\n         <h3 class=\"text-2xl font-bold text-gray-900 mb-4\">${product.title}</h3>\r\n-        <img src=\"${product.image}\" alt=\"${product.title}\" class=\"w-full h-64 object-cover rounded-lg mb-4\">\r\n+        <img src=\"/storage/${product.image}\" alt=\"${product.title}\" class=\"w-full h-64 object-cover rounded-lg mb-4\">\r\n         <p class=\"text-gray-600 mb-4\">${product.description}</p>\r\n     `;\r\n \r\n         modal.classList.remove('hidden');\r\n"
                 }
             ],
             "date": 1755817604579,
