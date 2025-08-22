@@ -1,0 +1,18 @@
+{
+    "sourceFile": "resources/views/layouts/app.blade.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1755817599129,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1755817599129,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>{{ config('app.name', 'Research Website') }}</title>\r\n\r\n    @vite('resources/css/app.css')\r\n</head>\r\n<body class=\"bg-gradient-to-b from-green-50 to-emerald-100 min-h-screen flex flex-col\">\r\n\r\n    <!-- Navbar -->\r\n    <header class=\"bg-white/70 backdrop-blur-sm shadow-md sticky top-0 z-50\">\r\n        <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n            <div class=\"flex justify-between items-center h-16\">\r\n                <a href=\"{{ url('/') }}\" class=\"text-2xl font-bold text-green-800\">Research</a>\r\n                <nav class=\"flex gap-6\">\r\n                    <a href=\"{{ url('/') }}\" class=\"text-green-900 hover:text-green-700\">Home</a>\r\n                    <a href=\"{{ route('research.index') }}\" class=\"text-green-900 hover:text-green-700\">Research</a>\r\n                </nav>\r\n            </div>\r\n        </div>\r\n    </header>\r\n\r\n    <!-- Main Content -->\r\n    <main class=\"flex-1\">\r\n        @yield('content')\r\n    </main>\r\n\r\n    <!-- Footer -->\r\n    <footer class=\"bg-white/70 backdrop-blur-sm border-t border-green-200\">\r\n        <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-green-800\">\r\n            <p>&copy; {{ date('Y') }} Research Website. All rights reserved.</p>\r\n        </div>\r\n    </footer>\r\n\r\n</body>\r\n</html>\r\n"
+        }
+    ]
+}

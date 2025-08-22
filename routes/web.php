@@ -3,6 +3,7 @@
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PengabdianController;
 use App\Http\Controllers\PublicationController;
+use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\ResearchProductController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,9 @@ Route::get('/tes-admin', function () {
     return 'Route Tes OK';
 });
 
+Route::get('/research', [ResearchController::class, 'index'])->name('research.index');
+Route::get('/publications', [PublicationController::class, 'index'])->name('publications.index');
+Route::get('/community-programs', [PengabdianController::class, 'index'])->name('community.index');
 
 // Route::prefix('admin/research-products')->group(function () {
 //     Route::get('/', [ResearchProductController::class, 'index'])->name('research-products.index');

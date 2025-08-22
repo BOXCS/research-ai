@@ -726,7 +726,7 @@
 
             <!-- View All Button -->
             <div class="text-center mt-16">
-                <button
+                <a href="{{ route('research.index') }}"
                     class="inline-flex items-center px-6 py-3 text-base font-medium rounded-full shadow-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 transition-all duration-300 transform hover:scale-105">
                     View All Research Projects
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="currentColor"
@@ -735,8 +735,8 @@
                             d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
                     </svg>
-                </button>
-            </div>
+                </a>
+            </div>            
         </div>
     </section>
 
@@ -847,7 +847,7 @@
 
             <!-- View All Button -->
             <div class="text-center mt-12">
-                <a href="#"
+                <a href="{{ route('publications.index') }}"
                     class="inline-flex items-center px-6 py-3 text-base font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-500 hover:to-green-600 transition-all duration-300 transform hover:scale-105">
                     View All Publications
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"
@@ -988,16 +988,15 @@
     
             <!-- View All Button -->
             <div class="text-center mt-12">
-                <button
+                <a href="{{ route('community.index') }}"
                     class="inline-flex items-center px-6 py-3 text-base font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-500 hover:to-green-600 transition-all duration-300 transform hover:scale-105">
                     View All Community Programs
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"
-                        fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
                             d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
                     </svg>
-                </button>
+                </a>
             </div>
         </div>
     </section>    
@@ -1076,34 +1075,61 @@
 
                             <!-- Social links -->
                             <div class="flex justify-center gap-3 mb-5">
-                                <a href="{{ $member['linkedin'] }}" target="_blank"
-                                    class="w-9 h-9 flex items-center justify-center bg-green-100 text-green-700 rounded-full hover:bg-green-700 hover:text-white transition-colors duration-200">
-                                    <!-- LinkedIn Icon -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                    </svg>
-                                </a>
-                                <a href="{{ $member['google_scholar'] }}" target="_blank"
-                                    class="w-9 h-9 flex items-center justify-center bg-green-100 text-green-700 rounded-full hover:bg-green-700 hover:text-white transition-colors duration-200">
-                                    <!-- Scholar Icon -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z" />
-                                    </svg>
-                                </a>
-                                <a href="mailto:{{ $member['email'] }}"
-                                    class="w-9 h-9 flex items-center justify-center bg-green-100 text-green-700 rounded-full hover:bg-green-700 hover:text-white transition-colors duration-200">
-                                    <!-- Email Icon -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                    </svg>
-                                </a>
-                            </div>
+                                {{-- LinkedIn --}}
+                                @if(!empty($member['linkedin']))
+                                    <a href="{{ $member['linkedin'] }}" target="_blank"
+                                        class="w-9 h-9 flex items-center justify-center bg-green-100 text-green-700 rounded-full hover:bg-green-700 hover:text-white transition-colors duration-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                        </svg>
+                                    </a>
+                                @else
+                                    <button onclick="alert('Member tidak memiliki LinkedIn')" 
+                                        class="w-9 h-9 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full cursor-not-allowed">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5z" />
+                                        </svg>
+                                    </button>
+                                @endif
+                            
+                                {{-- Google Scholar --}}
+                                @if(!empty($member['google_scholar']))
+                                    <a href="{{ $member['google_scholar'] }}" target="_blank"
+                                        class="w-9 h-9 flex items-center justify-center bg-green-100 text-green-700 rounded-full hover:bg-green-700 hover:text-white transition-colors duration-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                                        </svg>
+                                    </a>
+                                @else
+                                    <button onclick="alert('Member tidak memiliki Google Scholar')" 
+                                        class="w-9 h-9 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full cursor-not-allowed">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                                        </svg>
+                                    </button>
+                                @endif
+                            
+                                {{-- Email --}}
+                                @if(!empty($member['email']))
+                                    <a href="mailto:{{ $member['email'] }}"
+                                        class="w-9 h-9 flex items-center justify-center bg-green-100 text-green-700 rounded-full hover:bg-green-700 hover:text-white transition-colors duration-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </a>
+                                @else
+                                    <button onclick="alert('Member tidak memiliki Email')" 
+                                        class="w-9 h-9 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full cursor-not-allowed">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </button>
+                                @endif
+                            </div>                            
 
                             <!-- View profile button -->
                             <button onclick="openMemberModal({{ json_encode($member) }})"
@@ -1692,7 +1718,7 @@
             content.innerHTML = `
                 <div class="flex flex-col md:flex-row gap-6">
                     <div class="md:w-1/3">
-                        <img src="${member.image}" alt="${member.name}" class="w-full h-80 object-cover rounded-lg">
+                        <img src="/storage/${member.image}" alt="${member.name}" class="w-full h-80 object-cover rounded-lg">
                     </div>
                     <div class="md:w-2/3">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">${member.name}</h3>
