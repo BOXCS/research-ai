@@ -17,7 +17,7 @@
 
                         <!-- Image overlay -->
                         <div class="relative h-56 overflow-hidden">
-                            <img src="{{ asset($product->image) }}" alt="{{ $product->title }}"
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}"
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
 
