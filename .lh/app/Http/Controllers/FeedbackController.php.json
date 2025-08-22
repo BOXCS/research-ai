@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Http/Controllers/FeedbackController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1755824226722,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1755824226722,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers;\n\nuse App\\Models\\Feedback;\nuse Illuminate\\Http\\Request;\n\nclass FeedbackController extends Controller\n{\n    public function store(Request $request)\n    {\n        $validated = $request->validate([\n            'name'    => 'required|string|max:255',\n            'email'   => 'required|email|max:255',\n            'subject' => 'nullable|string|max:255',\n            'message' => 'required|string',\n        ]);\n\n        Feedback::create($validated);\n\n        return response()->json(['success' => true, 'message' => 'Pesan berhasil dikirim!']);\n    }\n}\n"
+        }
+    ]
+}

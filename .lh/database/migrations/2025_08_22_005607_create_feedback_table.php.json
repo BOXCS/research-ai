@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/migrations/2025_08_22_005607_create_feedback_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1755824188342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1755824188342,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('feedback', function (Blueprint $table) {\n            $table->id();\n            $table->string('name');\n            $table->string('email');\n            $table->string('subject')->nullable();\n            $table->text('message');\n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('feedback');\n    }\n};\n"
+        }
+    ]
+}

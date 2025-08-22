@@ -709,7 +709,7 @@
                                     </svg>
                                     Demo
                                 </button>
-                                <button onclick='openDetailsModal(@json($product))' 
+                                <button onclick='openDetailsModal(@json($product))'
                                     class="flex-1 flex items-center justify-center gap-2 border border-[#718c3c] text-[#2c4e1d] px-4 py-2.5 rounded-lg hover:border-[#a8d08d] hover:text-[#a8d08d] hover:bg-[#E3F1D9]/30 transition-all duration-200">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -1547,6 +1547,31 @@
     <script src="https://unpkg.com/alpinejs" defer></script>
 
     <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            const response = await fetch("{{ route('feedback.store') }}", {
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert(result.message);
+                this.reset();
+            } else {
+                alert("Gagal mengirim pesan.");
+            }
+        });
+    </script>
+
+    <script>
         // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
@@ -1803,29 +1828,6 @@
                 }
             });
         }
-
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(this);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                subject: formData.get('subject'),
-                message: formData.get('message')
-            };
-
-            // Here you would typically send the data to your Laravel backend
-            console.log('Contact form submitted:', data);
-
-            // Show success message (replace with actual notification system)
-            alert('Thank you for your message! We will get back to you soon.');
-
-            // Reset form
-            this.reset();
-        });
 
         // Initialize animations and effects
         document.addEventListener('DOMContentLoaded', function() {

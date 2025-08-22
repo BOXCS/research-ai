@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Filament/Resources/FeedbackResource.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1755824847482,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1755824847482,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Filament\\Resources;\n\nuse App\\Filament\\Resources\\FeedbackResource\\Pages;\nuse App\\Filament\\Resources\\FeedbackResource\\RelationManagers;\nuse App\\Models\\Feedback;\nuse Filament\\Forms;\nuse Filament\\Forms\\Form;\nuse Filament\\Resources\\Resource;\nuse Filament\\Tables;\nuse Filament\\Tables\\Table;\nuse Illuminate\\Database\\Eloquent\\Builder;\nuse Illuminate\\Database\\Eloquent\\SoftDeletingScope;\n\nclass FeedbackResource extends Resource\n{\n    protected static ?string $model = Feedback::class;\n\n    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';\n\n    public static function form(Form $form): Form\n{\n    return $form->schema([\n        Forms\\Components\\TextInput::make('name')->disabled(),\n        Forms\\Components\\TextInput::make('email')->disabled(),\n        Forms\\Components\\TextInput::make('subject')->disabled(),\n        Forms\\Components\\Textarea::make('message')->disabled(),\n    ]);\n}\n\npublic static function table(Table $table): Table\n{\n    return $table\n        ->columns([\n            Tables\\Columns\\TextColumn::make('name')->sortable()->searchable(),\n            Tables\\Columns\\TextColumn::make('email')->sortable(),\n            Tables\\Columns\\TextColumn::make('subject'),\n            Tables\\Columns\\TextColumn::make('message')->limit(50),\n            Tables\\Columns\\TextColumn::make('created_at')->dateTime('d M Y H:i'),\n        ]);\n}\n\n\n    public static function getRelations(): array\n    {\n        return [\n            //\n        ];\n    }\n\n    public static function getPages(): array\n    {\n        return [\n            'index' => Pages\\ListFeedback::route('/'),\n            'create' => Pages\\CreateFeedback::route('/create'),\n            'edit' => Pages\\EditFeedback::route('/{record}/edit'),\n        ];\n    }\n}\n"
+        }
+    ]
+}

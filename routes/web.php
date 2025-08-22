@@ -18,6 +18,9 @@ Route::get('/research', [ResearchController::class, 'index'])->name('research.in
 Route::get('/publications', [PublicationController::class, 'index'])->name('publications.index');
 Route::get('/community-programs', [PengabdianController::class, 'index'])->name('community.index');
 
+Route::post('/feedback', [\App\Http\Controllers\FeedbackController::class, 'store'])->name('feedback.store');
+
+
 // Route::prefix('admin/research-products')->group(function () {
 //     Route::get('/', [ResearchProductController::class, 'index'])->name('research-products.index');
 //     Route::get('/create', [ResearchProductController::class, 'create'])->name('research-products.create');
