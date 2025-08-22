@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 113,
+            "activePatchIndex": 114,
             "patches": [
                 {
                     "date": 1755703359034,
@@ -460,6 +460,10 @@
                 {
                     "date": 1755828585444,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1681,9 +1681,9 @@\n             const content = document.getElementById('detailsContent');\r\n \r\n             content.innerHTML = `\r\n         <h3 class=\"text-2xl font-bold text-gray-900 mb-4\">${product.title}</h3>\r\n-        <img src=\"${product.image}\" alt=\"${product.title}\" class=\"w-full h-64 object-cover rounded-lg mb-4\">\r\n+        <img src=\"/storage/${product.image}\" alt=\"${product.title}\" class=\"w-full h-64 object-cover rounded-lg mb-4\">\r\n         <div class=\"flex items-center gap-4 mb-4\">\r\n             <span class=\"px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm\">${product.category ? product.category.name : ''}</span>\r\n             <span class=\"px-3 py-1 ${\r\n                 product.status === 'Active' ? 'bg-green-100 text-green-800' :\r\n"
+                },
+                {
+                    "date": 1755830139954,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -774,9 +774,11 @@\n                                     <h3\r\n                                         class=\"text-xl font-semibold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors\">\r\n                                         {{ $publication->title }}\r\n                                     </h3>\r\n-                                    <p class=\"text-gray-600 text-sm mb-3\">{{ $publication->authors }}</p>\r\n+                                    <p class=\"text-gray-600 text-sm mb-3\">\r\n+                                        {{ implode(', ', $publication->author_names) }}\r\n+                                    </p>                                    \r\n                                 </div>\r\n                                 <div>\r\n                                     <span\r\n                                         class=\"px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-semibold rounded-full\">\r\n"
                 }
             ],
             "date": 1755703359034,

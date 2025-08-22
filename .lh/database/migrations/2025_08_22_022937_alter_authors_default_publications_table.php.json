@@ -1,0 +1,22 @@
+{
+    "sourceFile": "database/migrations/2025_08_22_022937_alter_authors_default_publications_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1755829791296,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1755829842402,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,10 @@\n      */\n     public function up(): void\n     {\n         Schema::table('publications', function (Blueprint $table) {\n-            $table->text('authors')->default('')->change();\n-        });\n+            $table->text('authors')->nullable()->change();\n+        });        \n     }\n \n     /**\n      * Reverse the migrations.\n"
+                }
+            ],
+            "date": 1755829791296,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::table('publications', function (Blueprint $table) {\n            $table->text('authors')->default('')->change();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::table('publications', function (Blueprint $table) {\n            $table->text('authors')->nullable(false)->change();\n        });\n    }\n};\n"
+        }
+    ]
+}

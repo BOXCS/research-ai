@@ -32,13 +32,22 @@ class Publication extends Model
 
     public function authors()
     {
-        return $this->belongsToMany(Author::class)->withPivot('author_order');
+        return $this->hasMany(PublicationAuthor::class);
     }
 
     public function researchProducts()
     {
         return $this->belongsToMany(ResearchProduct::class, 'research_publications');
     }
+
+    public function getAuthorNamesAttribute()
+{
+    return $this->authors()
+        ->orderBy('order')
+        ->get()
+        ->map(fn ($author) => $author->teamMember?->name ?? $author->external_name)
+        ->filter()
+        ->values()
+        ->toArray();
 }
-
-
+}

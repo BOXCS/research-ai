@@ -33,5 +33,11 @@ class TeamMember extends Model
     {
         return $this->belongsToMany(CommunityService::class, 'community_service_team')->withPivot('role');
     }
+
+    public function publicationAuthors()
+{
+    return $this->hasMany(\App\Models\PublicationAuthor::class);
+}
+
 }
 

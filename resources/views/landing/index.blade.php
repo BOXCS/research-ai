@@ -775,7 +775,9 @@
                                         class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors">
                                         {{ $publication->title }}
                                     </h3>
-                                    <p class="text-gray-600 text-sm mb-3">{{ $publication->authors }}</p>
+                                    <p class="text-gray-600 text-sm mb-3">
+                                        {{ implode(', ', $publication->author_names) }}
+                                    </p>                                    
                                 </div>
                                 <div>
                                     <span

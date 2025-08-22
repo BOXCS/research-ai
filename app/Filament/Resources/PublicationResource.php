@@ -29,15 +29,25 @@ class PublicationResource extends Resource
 
                 // Authors bisa pakai repeater agar lebih fleksibel
                 Forms\Components\Repeater::make('authors')
+                    ->relationship('authors') // relasi ke PublicationAuthor
                     ->schema([
-                        Forms\Components\TextInput::make('name')->label('Author Name'),
+                        Forms\Components\Select::make('team_member_id')
+                            ->label('Pilih dari Team Members')
+                            ->relationship('teamMember', 'name')
+                            ->searchable()
+                            ->preload(),
+
+                        Forms\Components\TextInput::make('external_name')
+                            ->label('Nama Eksternal (jika bukan tim member)')
+                            ->maxLength(255),
                     ])
+                    ->columns(2)
                     ->collapsed()
-                    ->columns(1)
-                    ->createItemButtonLabel('Add Author')
-                    ->defaultItems(1)
-                    ->label('Authors')
-                    ->required(),
+                    ->createItemButtonLabel('Tambah Author')
+                    ->orderable('order')
+                    ->label('Authors'),
+
+
 
                 Forms\Components\TextInput::make('journal')->maxLength(255),
                 Forms\Components\TextInput::make('year')->numeric(),

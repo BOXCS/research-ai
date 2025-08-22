@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/migrations/2025_08_22_021509_create_publication_authors_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1755828919779,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1755828919779,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('publication_authors', function (Blueprint $table) {\n            $table->id();\n            $table->foreignId('publication_id')->constrained()->onDelete('cascade');\n            $table->foreignId('team_member_id')->nullable()->constrained()->onDelete('set null');\n            $table->string('external_name')->nullable();\n            $table->integer('order')->nullable(); // untuk urutan author\n            $table->timestamps();\n        });\n        \n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('publication_authors');\n    }\n};\n"
+        }
+    ]
+}

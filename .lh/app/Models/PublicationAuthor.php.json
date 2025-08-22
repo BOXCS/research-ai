@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Models/PublicationAuthor.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1755829212230,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1755829212230,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass PublicationAuthor extends Model\n{\n    protected $fillable = ['publication_id', 'team_member_id', 'external_name', 'order'];\n\n    public function publication()\n    {\n        return $this->belongsTo(\\App\\Models\\Publication::class);\n    }\n\n    public function teamMember()\n    {\n        return $this->belongsTo(\\App\\Models\\TeamMember::class);\n    }\n}\n"
+        }
+    ]
+}

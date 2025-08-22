@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1752932404261,
@@ -28,6 +28,14 @@
                 {
                     "date": 1755751147368,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n         'impact_factor',\n         'citation_count',\n         'abstract',\n         'pdf_url',\n-        'category_id', // ganti dari 'category'\n+        'category_id',\n     ];\n \n     public function category()\n     {\n"
+                },
+                {
+                    "date": 1755829309417,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,11 +30,11 @@\n         return $this->belongsTo(Category::class);\n     }\n \n     public function authors()\n-    {\n-        return $this->belongsToMany(Author::class)->withPivot('author_order');\n-    }\n+{\n+    return $this->hasMany(PublicationAuthor::class);\n+}\n \n     public function researchProducts()\n     {\n         return $this->belongsToMany(ResearchProduct::class, 'research_publications');\n"
+                },
+                {
+                    "date": 1755830090848,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,15 +30,24 @@\n         return $this->belongsTo(Category::class);\n     }\n \n     public function authors()\n-{\n-    return $this->hasMany(PublicationAuthor::class);\n-}\n+    {\n+        return $this->hasMany(PublicationAuthor::class);\n+    }\n \n     public function researchProducts()\n     {\n         return $this->belongsToMany(ResearchProduct::class, 'research_publications');\n     }\n+\n+    public function getAuthorNamesAttribute()\n+{\n+    return $this->authors()\n+        ->orderBy('order')\n+        ->get()\n+        ->map(fn ($author) => $author->teamMember?->name ?? $author->external_name)\n+        ->filter()\n+        ->values()\n+        ->toArray();\n }\n-\n-\n+}\n"
                 }
             ],
             "date": 1752932404261,
