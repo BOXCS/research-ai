@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 114,
+            "activePatchIndex": 115,
             "patches": [
                 {
                     "date": 1755703359034,
@@ -464,6 +464,10 @@
                 {
                     "date": 1755830139954,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -774,9 +774,11 @@\n                                     <h3\r\n                                         class=\"text-xl font-semibold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors\">\r\n                                         {{ $publication->title }}\r\n                                     </h3>\r\n-                                    <p class=\"text-gray-600 text-sm mb-3\">{{ $publication->authors }}</p>\r\n+                                    <p class=\"text-gray-600 text-sm mb-3\">\r\n+                                        {{ implode(', ', $publication->author_names) }}\r\n+                                    </p>                                    \r\n                                 </div>\r\n                                 <div>\r\n                                     <span\r\n                                         class=\"px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-semibold rounded-full\">\r\n"
+                },
+                {
+                    "date": 1755831252800,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -889,9 +889,9 @@\n                         class=\"group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl border border-white/60 transition-all duration-300 hover:shadow-2xl hover:bg-white/90 hover:-translate-y-2\">\r\n \r\n                         <!-- Image with overlay -->\r\n                         <div class=\"relative h-56 overflow-hidden\">\r\n-                            <img src=\"{{ $program['image'] }}\" alt=\"{{ $program->title }}\"\r\n+                            <img src=\"{{ asset('storage/' . $program->image) }}\" alt=\"{{ $program->title }}\"\r\n                                 class=\"w-full h-full object-cover transition-transform duration-500 group-hover:scale-105\">\r\n                             <div class=\"absolute inset-0 bg-gradient-to-t from-emerald-900/60 to-transparent\"></div>\r\n \r\n                             <!-- Status badge -->\r\n"
                 }
             ],
             "date": 1755703359034,

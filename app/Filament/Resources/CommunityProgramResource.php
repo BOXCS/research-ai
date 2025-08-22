@@ -36,7 +36,8 @@ class CommunityProgramResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->label('Gambar')
                     ->directory('community-programs')
-                    ->image(),
+                    ->image()
+                    ->disk('public'),
 
                 Forms\Components\TextInput::make('target_audience')
                     ->label('Target Audiens')
@@ -44,23 +45,54 @@ class CommunityProgramResource extends Resource
 
                 Forms\Components\DatePicker::make('tgl_mulai')
                     ->label('Tanggal Mulai')
-                    ->reactive(),
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                        $tglSelesai = $get('tgl_selesai');
+                        if ($state && $tglSelesai) {
+                            $days = \Carbon\Carbon::parse($state)->diffInDays(\Carbon\Carbon::parse($tglSelesai)) + 1;
+                            $set('duration', $days . ' hari');
+                        }
+
+                        // Hitung status
+                        $today = now();
+                        if ($state && $tglSelesai) {
+                            if ($today->lt(\Carbon\Carbon::parse($state))) {
+                                $set('status', 'Planned');
+                            } elseif ($today->between(\Carbon\Carbon::parse($state), \Carbon\Carbon::parse($tglSelesai))) {
+                                $set('status', 'Ongoing');
+                            } elseif ($today->gt(\Carbon\Carbon::parse($tglSelesai))) {
+                                $set('status', 'Completed');
+                            }
+                        }
+                    }),
 
                 Forms\Components\DatePicker::make('tgl_selesai')
                     ->label('Tanggal Selesai')
                     ->reactive()
-                    ->after('tgl_mulai'),
+                    ->after('tgl_mulai')
+                    ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                        $tglMulai = $get('tgl_mulai');
+                        if ($tglMulai && $state) {
+                            $days = \Carbon\Carbon::parse($tglMulai)->diffInDays(\Carbon\Carbon::parse($state)) + 1;
+                            $set('duration', $days . ' hari');
+                        }
+
+                        // Hitung status
+                        $today = now();
+                        if ($tglMulai && $state) {
+                            if ($today->lt(\Carbon\Carbon::parse($tglMulai))) {
+                                $set('status', 'Planned');
+                            } elseif ($today->between(\Carbon\Carbon::parse($tglMulai), \Carbon\Carbon::parse($state))) {
+                                $set('status', 'Ongoing');
+                            } elseif ($today->gt(\Carbon\Carbon::parse($state))) {
+                                $set('status', 'Completed');
+                            }
+                        }
+                    }),
 
                 Forms\Components\TextInput::make('duration')
                     ->label('Durasi')
-                    ->readOnly()
-                    ->afterStateHydrated(function ($component, $state, $record) {
-                        if ($record && $record->tgl_mulai && $record->tgl_selesai) {
-                            $days = $record->tgl_mulai->diffInDays($record->tgl_selesai);
-                            $component->state($days . ' hari');
-                        }
-                    })
-                    ->dehydrated(false),
+                    ->readOnly(),
 
                 Forms\Components\TextInput::make('participants')
                     ->label('Jumlah Peserta')
@@ -70,13 +102,9 @@ class CommunityProgramResource extends Resource
                     ->label('Lokasi')
                     ->maxLength(255),
 
-                Forms\Components\Select::make('status')
+                    Forms\Components\TextInput::make('status')
                     ->label('Status')
-                    ->options([
-                        'Completed' => 'Completed',
-                        'Ongoing' => 'Ongoing',
-                        'Planned' => 'Planned',
-                    ]),
+                    ->readOnly(),
 
                 Forms\Components\Textarea::make('impact')
                     ->label('Dampak')
