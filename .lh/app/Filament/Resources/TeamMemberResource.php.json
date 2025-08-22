@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1755729941036,
@@ -40,6 +40,10 @@
                 {
                     "date": 1755752110592,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,10 @@\n         return $table\n             ->columns([\n                 Tables\\Columns\\ImageColumn::make('image')\n                     ->label('Foto')\n-                    ->circular(),\n+                    ->circular()\n+                    ->disk('public'),\n                 Tables\\Columns\\TextColumn::make('name')\n                     ->searchable()\n                     ->sortable(),\n                 Tables\\Columns\\TextColumn::make('position'),\n"
+                },
+                {
+                    "date": 1755841600203,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n use Filament\\Forms\\Form;\n use Filament\\Resources\\Resource;\n use Filament\\Tables;\n use Filament\\Tables\\Table;\n+use Illuminate\\Support\\Str;\n \n class TeamMemberResource extends Resource\n {\n     protected static ?string $model = TeamMember::class;\n@@ -73,13 +74,18 @@\n                 Forms\\Components\\TextInput::make('h_index')\n                     ->label('H-Index')\n                     ->placeholder('Contoh: 10'),\n \n-                Forms\\Components\\FileUpload::make('image')\n+                    Forms\\Components\\FileUpload::make('image')\n                     ->image()\n                     ->directory('team-members')\n                     ->disk('public')\n-                    ->maxSize(2048),\n+                    ->maxSize(2048)\n+                    ->getUploadedFileNameForStorageUsing(function ($file) {\n+                        return Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME))\n+                            . '.' . $file->getClientOriginalExtension();\n+                    }),\n+                \n \n                 Forms\\Components\\Textarea::make('bio')\n                     ->label('Bio')\n                     ->rows(5)\n"
                 }
             ],
             "date": 1755729941036,

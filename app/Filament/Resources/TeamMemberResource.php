@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class TeamMemberResource extends Resource
 {
@@ -74,11 +75,16 @@ class TeamMemberResource extends Resource
                     ->label('H-Index')
                     ->placeholder('Contoh: 10'),
 
-                Forms\Components\FileUpload::make('image')
+                    Forms\Components\FileUpload::make('image')
                     ->image()
                     ->directory('team-members')
                     ->disk('public')
-                    ->maxSize(2048),
+                    ->maxSize(2048)
+                    ->getUploadedFileNameForStorageUsing(function ($file) {
+                        return Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME))
+                            . '.' . $file->getClientOriginalExtension();
+                    }),
+                
 
                 Forms\Components\Textarea::make('bio')
                     ->label('Bio')
