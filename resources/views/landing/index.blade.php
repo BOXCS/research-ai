@@ -1715,7 +1715,7 @@
 
             content.innerHTML = `
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">${program.title}</h3>
-                <img src="${program.image}" alt="${program.title}" class="w-full h-64 object-cover rounded-lg mb-4">
+                <img src="/storage/${program.image}" alt="${program.title}" class="w-full h-64 object-cover rounded-lg mb-4">
                 <div class="mb-4">
                     <span class="px-3 py-1 ${program.status === 'Completed' ? 'bg-green-100 text-green-800' : program.status === 'Ongoing' ? 'bg-blue-100 text-blue-800' : 'bg-orange-100 text-orange-800'} rounded-full text-sm">${program.status}</span>
                 </div>
