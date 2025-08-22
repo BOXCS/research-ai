@@ -35,17 +35,33 @@ class PublicationResource extends Resource
                             ->label('Pilih dari Team Members')
                             ->relationship('teamMember', 'name')
                             ->searchable()
-                            ->preload(),
+                            ->preload()
+                            ->reactive() // agar bisa bereaksi ke perubahan state
+                            ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                                // jika team_member dipilih, kosongkan external_name
+                                if ($state) {
+                                    $set('external_name', null);
+                                }
+                            }),
 
                         Forms\Components\TextInput::make('external_name')
                             ->label('Nama Eksternal (jika bukan tim member)')
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->reactive()
+                            ->disabled(fn($state, $get) => !empty($get('team_member_id'))) // disabled jika team_member diisi
+                            ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                                // jika external_name diisi, kosongkan team_member_id
+                                if ($state) {
+                                    $set('team_member_id', null);
+                                }
+                            }),
                     ])
                     ->columns(2)
                     ->collapsed()
                     ->createItemButtonLabel('Tambah Author')
                     ->orderable('order')
                     ->label('Authors'),
+
 
 
 
