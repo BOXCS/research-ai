@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 116,
+            "activePatchIndex": 118,
             "patches": [
                 {
                     "date": 1755703359034,
@@ -472,6 +472,14 @@
                 {
                     "date": 1755831802745,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1714,9 +1714,9 @@\n             const content = document.getElementById('programContent');\r\n \r\n             content.innerHTML = `\r\n                 <h3 class=\"text-2xl font-bold text-gray-900 mb-4\">${program.title}</h3>\r\n-                <img src=\"${program.image}\" alt=\"${program.title}\" class=\"w-full h-64 object-cover rounded-lg mb-4\">\r\n+                <img src=\"/storage/${program.image}\" alt=\"${program.title}\" class=\"w-full h-64 object-cover rounded-lg mb-4\">\r\n                 <div class=\"mb-4\">\r\n                     <span class=\"px-3 py-1 ${program.status === 'Completed' ? 'bg-green-100 text-green-800' : program.status === 'Ongoing' ? 'bg-blue-100 text-blue-800' : 'bg-orange-100 text-orange-800'} rounded-full text-sm\">${program.status}</span>\r\n                 </div>\r\n                 <p class=\"text-gray-600 mb-6\">${program.description}</p>\r\n"
+                },
+                {
+                    "date": 1755832093438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -776,9 +776,9 @@\n                                         {{ $publication->title }}\r\n                                     </h3>\r\n                                     <p class=\"text-gray-600 text-sm mb-3\">\r\n                                         {{ implode(', ', $publication->author_names) }}\r\n-                                    </p>                                    \r\n+                                    </p>\r\n                                 </div>\r\n                                 <div>\r\n                                     <span\r\n                                         class=\"px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-semibold rounded-full\">\r\n@@ -1695,9 +1695,20 @@\n         </div>\r\n         <p class=\"text-gray-600 mb-4\">${product.description}</p>\r\n         <div class=\"bg-gray-50 p-4 rounded-lg\">\r\n             <h4 class=\"font-semibold text-gray-900 mb-2\">Project Duration</h4>\r\n-            <p class=\"text-gray-600\">${product.tgl_mulai} - ${product.tgl_selesai}</p>\r\n+            <p className=\"text-gray-600\">\r\n+  {new Date(product.tgl_mulai).toLocaleDateString('id-ID', {\r\n+    day: 'numeric',\r\n+    month: 'short',\r\n+    year: 'numeric',\r\n+  })} - {new Date(product.tgl_selesai).toLocaleDateString('id-ID', {\r\n+    day: 'numeric',\r\n+    month: 'short',\r\n+    year: 'numeric',\r\n+  })}\r\n+</p>\r\n+\r\n         </div>\r\n     `;\r\n \r\n             modal.style.display = 'block';\r\n"
+                },
+                {
+                    "date": 1755832123724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -776,9 +776,9 @@\n                                         {{ $publication->title }}\r\n                                     </h3>\r\n                                     <p class=\"text-gray-600 text-sm mb-3\">\r\n                                         {{ implode(', ', $publication->author_names) }}\r\n-                                    </p>\r\n+                                    </p>                                    \r\n                                 </div>\r\n                                 <div>\r\n                                     <span\r\n                                         class=\"px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-semibold rounded-full\">\r\n@@ -1695,20 +1695,9 @@\n         </div>\r\n         <p class=\"text-gray-600 mb-4\">${product.description}</p>\r\n         <div class=\"bg-gray-50 p-4 rounded-lg\">\r\n             <h4 class=\"font-semibold text-gray-900 mb-2\">Project Duration</h4>\r\n-            <p className=\"text-gray-600\">\r\n-  {new Date(product.tgl_mulai).toLocaleDateString('id-ID', {\r\n-    day: 'numeric',\r\n-    month: 'short',\r\n-    year: 'numeric',\r\n-  })} - {new Date(product.tgl_selesai).toLocaleDateString('id-ID', {\r\n-    day: 'numeric',\r\n-    month: 'short',\r\n-    year: 'numeric',\r\n-  })}\r\n-</p>\r\n-\r\n+            <p class=\"text-gray-600\">${product.tgl_mulai} - ${product.tgl_selesai}</p>\r\n         </div>\r\n     `;\r\n \r\n             modal.style.display = 'block';\r\n"
                 }
             ],
             "date": 1755703359034,

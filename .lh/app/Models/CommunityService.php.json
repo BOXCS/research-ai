@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1753156150830,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1755832140314,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,35 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Model;\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+\n+class CommunityService extends Model\n+{\n+    use HasFactory;\n+\n+    protected $fillable = [\n+        'title', \n+        'description', \n+        'image', \n+        'target_audience',\n+        'tgl_mulai',\n+        'tgl_selesai',\n+        'participants', \n+        'location', \n+        'duration',\n+        'status', \n+        'impact',\n+    ];\n+\n+    protected $casts = [\n+        'tgl_mulai' => 'date:Y-m-d',\n+        'tgl_selesai' => 'date:Y-m-d',\n+    ];    \n+\n+    public function teamMembers()\n+    {\n+        return $this->belongsToMany(TeamMember::class, 'community_service_team')->withPivot('role');\n+    }\n+}\n"
                 }
             ],
             "date": 1753156150830,
