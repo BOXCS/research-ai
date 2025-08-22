@@ -1682,7 +1682,7 @@
 
             content.innerHTML = `
         <h3 class="text-2xl font-bold text-gray-900 mb-4">${product.title}</h3>
-        <img src="${product.image}" alt="${product.title}" class="w-full h-64 object-cover rounded-lg mb-4">
+        <img src="/storage/${product.image}" alt="${product.title}" class="w-full h-64 object-cover rounded-lg mb-4">
         <div class="flex items-center gap-4 mb-4">
             <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">${product.category ? product.category.name : ''}</span>
             <span class="px-3 py-1 ${
