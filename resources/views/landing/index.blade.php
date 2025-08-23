@@ -1767,61 +1767,77 @@
             const modal = document.getElementById('memberModal');
             const content = document.getElementById('memberContent');
 
+            const bioSection = member.bio ?
+                `
+            <div>
+                <h4 class="font-semibold text-gray-900 mb-2">Bio</h4>
+                <p class="text-gray-600">${member.bio}</p>
+            </div>
+          ` :
+                '';
+
             content.innerHTML = `
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="md:w-1/3">
-                        <img src="/storage/${member.image}" alt="${member.name}" class="w-full h-80 object-cover rounded-lg">
+        <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-1/3">
+                <img src="/storage/${member.image}" alt="${member.name}" class="w-full h-80 object-cover rounded-lg">
+            </div>
+            <div class="md:w-2/3">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">${member.name}</h3>
+                <p class="text-xl text-blue-600 mb-4">${member.position}</p>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Specialization</h4>
+                        <p class="text-gray-600">${member.specialization ?? ''}</p>
                     </div>
-                    <div class="md:w-2/3">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">${member.name}</h3>
-                        <p class="text-xl text-blue-600 mb-4">${member.position}</p>
-                        <p class="text-gray-600 mb-6">${member.bio}</p>
-                        
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-2">Specialization</h4>
-                                <p class="text-gray-600">${member.specialization}</p>
-                            </div>
-                            
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-2">Education</h4>
-                                <p class="text-gray-600">${member.education}</p>
-                            </div>
-                            
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-2">Experience</h4>
-                                <p class="text-gray-600">${member.experience}</p>
-                            </div>
-                            
-                            <div class="flex items-center gap-4">
-                                <div class="text-center">
-                                    <div class="text-2xl font-bold text-blue-600">${member.publications}</div>
-                                    <div class="text-sm text-gray-600">Publications</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-2xl font-bold text-blue-600">${member.h_index}</div>
-                                    <div class="text-sm text-gray-600">H-Index</div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex gap-4">
-                                <a href="${member.linkedin}" target="_blank" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-center">
-                                    <i class="fab fa-linkedin mr-2"></i>LinkedIn
-                                </a>
-                                <a href="${member.google_scholar}" target="_blank" class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200 text-center">
-                                    <i class="fas fa-graduation-cap mr-2"></i>Scholar
-                                </a>
-                                <a href="mailto:${member.email}" class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-center">
-                                    <i class="fas fa-envelope mr-2"></i>Email
-                                </a>
-                            </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Education</h4>
+                        <p class="text-gray-600">${member.education ?? ''}</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Experience</h4>
+                        <p class="text-gray-600">${member.experience ?? ''}</p>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-blue-600">${member.publications ?? 0}</div>
+                            <div class="text-sm text-gray-600">Publications</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-blue-600">${member.h_index ?? 0}</div>
+                            <div class="text-sm text-gray-600">H-Index</div>
                         </div>
                     </div>
+                    
+                    ${bioSection}
+                    
+                    <div class="flex gap-4">
+                        ${member.linkedin ? `
+                            <a href="${member.linkedin}" target="_blank" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-center">
+                                <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                            </a>` : ''}
+                        
+                        ${member.google_scholar ? `
+                            <a href="${member.google_scholar}" target="_blank" class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200 text-center">
+                                <i class="fas fa-graduation-cap mr-2"></i>Scholar
+                            </a>` : ''}
+                        
+                        ${member.email ? `
+                            <a href="mailto:${member.email}" class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-center">
+                                <i class="fas fa-envelope mr-2"></i>Email
+                            </a>` : ''}
+                    </div>
                 </div>
-            `;
+            </div>
+        </div>
+    `;
 
             modal.style.display = 'block';
         }
+
 
         function closeMemberModal() {
             const modal = document.getElementById('memberModal');
