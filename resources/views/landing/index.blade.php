@@ -1287,7 +1287,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-900">Address</h4>
-                                <p class="text-gray-600">Research AI Laboratory<br>Jember, East Java, Indonesia</p>
+                                <p class="text-gray-600">Jurusan Teknologi Informasi, Politeknik Negeri Jember<br>Jl. Mastrip 164 Jember</p>
                             </div>
                         </div>
 
@@ -1318,8 +1318,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-gray-900">Phone</h4>
-                                <p class="text-gray-600">+62 123 456 7890</p>
+                                <h4 class="font-semibold text-gray-900">Telp / WA</h4>
+                                <p class="text-gray-600">+62 813 3660 8000</p>
                             </div>
                         </div>
                     </div>
