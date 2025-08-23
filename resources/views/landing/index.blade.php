@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research AI - Advanced AI Research Laboratory</title>
+    <title>Research AI - Academy Industrial Research on Intelegence System</title>
     <meta name="description"
         content="Leading AI research laboratory focused on innovative solutions in healthcare, agriculture, and education technology.">
     <meta name="keywords" content="AI research, machine learning, deep learning, healthcare AI, agricultural technology">
@@ -1129,7 +1129,14 @@
                                 {{-- Email --}}
                                 @if (!empty($member['email']))
                                     <a href="mailto:{{ $member['email'] }}"
+                                        onclick="if(!window.navigator.userAgent.includes('Mobile')){ 
+                                            setTimeout(() => { 
+                                                if(!document.hasFocus()) return; 
+                                                alert('Silakan gunakan aplikasi email atau copy alamat: {{ $member['email'] }}'); 
+                                            }, 1000); 
+                                        }"
                                         class="w-9 h-9 flex items-center justify-center bg-green-100 text-green-700 rounded-full hover:bg-green-700 hover:text-white transition-colors duration-200">
+                                        <!-- SVG ikon email -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1139,13 +1146,10 @@
                                 @else
                                     <button onclick="alert('Member tidak memiliki Email')"
                                         class="w-9 h-9 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full cursor-not-allowed">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                        </svg>
+                                        <!-- SVG ikon email -->
                                     </button>
                                 @endif
+
                             </div>
 
                             <!-- View profile button -->
@@ -1816,19 +1820,19 @@
                     
                     <div class="flex gap-4">
                         ${member.linkedin ? `
-                                <a href="${member.linkedin}" target="_blank" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-center">
-                                    <i class="fab fa-linkedin mr-2"></i>LinkedIn
-                                </a>` : ''}
+                                        <a href="${member.linkedin}" target="_blank" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-center">
+                                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                                        </a>` : ''}
                         
                         ${member.google_scholar ? `
-                                <a href="${member.google_scholar}" target="_blank" class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200 text-center">
-                                    <i class="fas fa-graduation-cap mr-2"></i>Scholar
-                                </a>` : ''}
+                                        <a href="${member.google_scholar}" target="_blank" class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200 text-center">
+                                            <i class="fas fa-graduation-cap mr-2"></i>Scholar
+                                        </a>` : ''}
                         
                         ${member.email ? `
-                                <a href="mailto:${member.email}" class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-center">
-                                    <i class="fas fa-envelope mr-2"></i>Email
-                                </a>` : ''}
+                                        <a href="mailto:${member.email}" class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-center">
+                                            <i class="fas fa-envelope mr-2"></i>Email
+                                        </a>` : ''}
                     </div>
                 </div>
             </div>
