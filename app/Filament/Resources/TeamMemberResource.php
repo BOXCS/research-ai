@@ -83,7 +83,7 @@ class TeamMemberResource extends Resource
                     ->maxSize(2048)
                     ->getUploadedFileNameForStorageUsing(function ($file) {
                         return Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME))
-                            . '.' . $file->getClientOriginalExtension();
+                            . '-' . time() . '.' . $file->getClientOriginalExtension();
                     }),
                 
 
