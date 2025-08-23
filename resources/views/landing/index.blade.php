@@ -19,6 +19,7 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- SVG Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('research-logo-green.svg') }}">
@@ -337,6 +338,20 @@
             transform: scale(1.05);
         }
     </style>
+
+    <script>
+        function copyEmail(email) {
+            navigator.clipboard.writeText(email).then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Email berhasil disalin!',
+                    text: email,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            });
+        }
+    </script>
 </head>
 
 <body style="background-color: #F0F7ED;">
@@ -1133,10 +1148,24 @@
             if(!/Mobi|Android/i.test(navigator.userAgent)) {
                 event.preventDefault(); 
                 navigator.clipboard.writeText('{{ $member['email'] }}')
-                    .then(() => alert('Email disalin: {{ $member['email'] }}'))
-                    .catch(() => alert('Gagal menyalin email, silakan copy manual.'));
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Email berhasil disalin!',
+                            text: '{{ $member['email'] }}',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    })
+                    .catch(() => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Gagal menyalin email, silakan copy manual.',
+                        });
+                    });
             }
-       "
+        "
                                         class="w-9 h-9 flex items-center justify-center bg-green-100 text-green-700 rounded-full hover:bg-green-700 hover:text-white transition-colors duration-200">
                                         <!-- SVG ikon email -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
@@ -1146,11 +1175,24 @@
                                         </svg>
                                     </a>
                                 @else
-                                    <button onclick="alert('Member tidak memiliki Email')"
+                                    <button
+                                        onclick="
+        Swal.fire({
+            icon: 'warning',
+            title: 'Tidak ada email',
+            text: 'Member ini tidak memiliki email.',
+        });
+    "
                                         class="w-9 h-9 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full cursor-not-allowed">
                                         <!-- SVG ikon email -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
                                     </button>
                                 @endif
+
 
 
                             </div>
@@ -1823,30 +1865,29 @@
                     
                     <div class="flex gap-4">
     ${member.linkedin ? `
-            <a href="${member.linkedin}" target="_blank" 
-               class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-center">
-                <i class="fab fa-linkedin mr-2"></i>LinkedIn
-            </a>` : ''}
+                        <a href="${member.linkedin}" target="_blank" 
+                           class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-center">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>` : ''}
 
     ${member.google_scholar ? `
-            <a href="${member.google_scholar}" target="_blank" 
-               class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200 text-center">
-                <i class="fas fa-graduation-cap mr-2"></i>Scholar
-            </a>` : ''}
+                        <a href="${member.google_scholar}" target="_blank" 
+                           class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200 text-center">
+                            <i class="fas fa-graduation-cap mr-2"></i>Scholar
+                        </a>` : ''}
 
     ${member.email ? `
-            <a href="mailto:${member.email}" 
-               onclick="
-                    if(!/Mobi|Android/i.test(navigator.userAgent)) {
-                        event.preventDefault(); 
-                        navigator.clipboard.writeText('${member.email}')
-                            .then(() => alert('Email disalin: ${member.email}'))
-                            .catch(() => alert('Gagal menyalin email, silakan copy manual.'));
-                    }
-               "
-               class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-center">
-                <i class="fas fa-envelope mr-2"></i>Email
-            </a>` : ''}
+                        <a href="mailto:${member.email}" 
+           onclick="
+                if(!/Mobi|Android/i.test(navigator.userAgent)) {
+                    event.preventDefault(); 
+                    copyEmail('${member.email}');
+                }
+           "
+           class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-center">
+            <i class="fas fa-envelope mr-2"></i>Email
+        </a>
+        ` : ''}
 </div>
 
                 </div>
