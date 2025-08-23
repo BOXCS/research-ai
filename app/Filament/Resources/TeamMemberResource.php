@@ -41,20 +41,20 @@ class TeamMemberResource extends Resource
                     ->label('Pendidikan')
                     ->placeholder('Contoh: S3'),
 
-                    Forms\Components\TextInput::make('experience_years')
+                Forms\Components\TextInput::make('experience_years')
                     ->numeric()
                     ->minValue(0)
                     ->maxValue(100)
                     ->label('Tahun Pengalaman')
                     ->placeholder('Contoh: 5')
-                    ->dehydrateStateUsing(fn ($state) => $state ? "{$state} Tahun Pengalaman" : null)
+                    ->dehydrateStateUsing(fn($state) => $state ? "{$state} Tahun Pengalaman" : null)
                     ->afterStateHydrated(function ($component, $state) {
                         // Supaya saat edit, hanya angka tahun yang muncul
                         if ($state && preg_match('/(\d+)/', $state, $matches)) {
                             $component->state($matches[1]);
                         }
                     })
-                    ->required(),                
+                    ->required(),
 
                 Forms\Components\TextInput::make('email')
                     ->email()
@@ -76,16 +76,18 @@ class TeamMemberResource extends Resource
                     ->label('H-Index')
                     ->placeholder('Contoh: 10'),
 
-                    Forms\Components\FileUpload::make('image')
+                Forms\Components\FileUpload::make('image')
                     ->image()
                     ->directory('team-members')
                     ->disk('public')
                     ->maxSize(2048)
+                    ->imageEditor() // aktifkan editor bawaan (crop, rotate, scale, flip)
                     ->getUploadedFileNameForStorageUsing(function ($file) {
                         return Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME))
                             . '-' . time() . '.' . $file->getClientOriginalExtension();
                     }),
-                
+
+
 
                 Forms\Components\Textarea::make('bio')
                     ->label('Bio')
