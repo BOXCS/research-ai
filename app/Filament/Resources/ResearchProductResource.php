@@ -31,7 +31,7 @@ class ResearchProductResource extends Resource
                     ->label('Description')
                     ->rows(4),
 
-                    Forms\Components\Select::make('category_id')
+                Forms\Components\Select::make('category_id')
                     ->label('Kategori')
                     ->options(Category::where('type', 'research')->pluck('name', 'id'))
                     ->searchable()
@@ -46,7 +46,7 @@ class ResearchProductResource extends Resource
                         $category = Category::create($data);
                         return $category->id; // return id supaya langsung ke-select
                     }),
-                
+
 
                 Forms\Components\Select::make('status')
                     ->label('Status')

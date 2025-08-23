@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PublicationResource\Pages;
+use App\Models\Category;
 use App\Models\Publication;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -69,10 +70,20 @@ class PublicationResource extends Resource
                 Forms\Components\TextInput::make('year')->numeric(),
 
                 Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
+                    ->label('Kategori')
+                    ->options(Category::where('type', 'research')->pluck('name', 'id'))
                     ->searchable()
                     ->preload()
-                    ->label('Category'),
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Nama Kategori')
+                            ->required(),
+                        Forms\Components\Hidden::make('type')->default('research'),
+                    ])
+                    ->createOptionUsing(function (array $data): int {
+                        $category = Category::create($data);
+                        return $category->id; // return id supaya langsung ke-select
+                    }),
 
                 Forms\Components\TextInput::make('volume')->maxLength(50),
                 Forms\Components\TextInput::make('issue')->maxLength(50),
