@@ -1822,21 +1822,33 @@
                     ${bioSection}
                     
                     <div class="flex gap-4">
-                        ${member.linkedin ? `
-                                            <a href="${member.linkedin}" target="_blank" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-center">
-                                                <i class="fab fa-linkedin mr-2"></i>LinkedIn
-                                            </a>` : ''}
-                        
-                        ${member.google_scholar ? `
-                                            <a href="${member.google_scholar}" target="_blank" class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200 text-center">
-                                                <i class="fas fa-graduation-cap mr-2"></i>Scholar
-                                            </a>` : ''}
-                        
-                        ${member.email ? `
-                                            <a href="mailto:${member.email}" class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-center">
-                                                <i class="fas fa-envelope mr-2"></i>Email
-                                            </a>` : ''}
-                    </div>
+    ${member.linkedin ? `
+            <a href="${member.linkedin}" target="_blank" 
+               class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-center">
+                <i class="fab fa-linkedin mr-2"></i>LinkedIn
+            </a>` : ''}
+
+    ${member.google_scholar ? `
+            <a href="${member.google_scholar}" target="_blank" 
+               class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200 text-center">
+                <i class="fas fa-graduation-cap mr-2"></i>Scholar
+            </a>` : ''}
+
+    ${member.email ? `
+            <a href="mailto:${member.email}" 
+               onclick="
+                    if(!/Mobi|Android/i.test(navigator.userAgent)) {
+                        event.preventDefault(); 
+                        navigator.clipboard.writeText('${member.email}')
+                            .then(() => alert('Email disalin: ${member.email}'))
+                            .catch(() => alert('Gagal menyalin email, silakan copy manual.'));
+                    }
+               "
+               class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-center">
+                <i class="fas fa-envelope mr-2"></i>Email
+            </a>` : ''}
+</div>
+
                 </div>
             </div>
         </div>
