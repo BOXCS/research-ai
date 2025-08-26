@@ -19,6 +19,11 @@ class ResearchProductResource extends Resource
     protected static ?string $navigationGroup = 'Data';
     protected static ?string $navigationLabel = 'Research Products';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form

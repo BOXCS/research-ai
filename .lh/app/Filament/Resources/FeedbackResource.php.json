@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1755824847482,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1756185230681,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,13 @@\n     protected static ?string $model = Feedback::class;\n \n     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';\n \n+    public static function getNavigationBadge(): ?string\n+    {\n+        return static::getModel()::count();\n+    }\n+\n     public static function form(Form $form): Form\n {\n     return $form->schema([\n         Forms\\Components\\TextInput::make('name')->disabled(),\n"
                 }
             ],
             "date": 1755824847482,

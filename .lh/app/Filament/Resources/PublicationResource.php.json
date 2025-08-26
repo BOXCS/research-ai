@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1755703651521,
@@ -28,6 +28,10 @@
                 {
                     "date": 1755907237238,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \n namespace App\\Filament\\Resources;\n \n use App\\Filament\\Resources\\PublicationResource\\Pages;\n+use App\\Models\\Category;\n use App\\Models\\Publication;\n use Filament\\Forms;\n use Filament\\Forms\\Form;\n use Filament\\Resources\\Resource;\n@@ -68,12 +69,22 @@\n                 Forms\\Components\\TextInput::make('journal')->maxLength(255),\n                 Forms\\Components\\TextInput::make('year')->numeric(),\n \n                 Forms\\Components\\Select::make('category_id')\n-                    ->relationship('category', 'name')\n+                    ->label('Kategori')\n+                    ->options(Category::where('type', 'research')->pluck('name', 'id'))\n                     ->searchable()\n                     ->preload()\n-                    ->label('Category'),\n+                    ->createOptionForm([\n+                        Forms\\Components\\TextInput::make('name')\n+                            ->label('Nama Kategori')\n+                            ->required(),\n+                        Forms\\Components\\Hidden::make('type')->default('research'),\n+                    ])\n+                    ->createOptionUsing(function (array $data): int {\n+                        $category = Category::create($data);\n+                        return $category->id; // return id supaya langsung ke-select\n+                    }),\n \n                 Forms\\Components\\TextInput::make('volume')->maxLength(50),\n                 Forms\\Components\\TextInput::make('issue')->maxLength(50),\n                 Forms\\Components\\TextInput::make('pages')->maxLength(50),\n"
+                },
+                {
+                    "date": 1756185192350,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,13 @@\n     protected static ?string $navigationLabel = 'Publications';\n     protected static ?string $pluralModelLabel = 'Publications';\n     protected static ?string $navigationGroup = 'Data';\n \n+    public static function getNavigationBadge(): ?string\n+    {\n+        return static::getModel()::count();\n+    }\n+\n     public static function form(Form $form): Form\n     {\n         return $form\n             ->schema([\n"
                 }
             ],
             "date": 1755703651521,

@@ -20,6 +20,11 @@ class CommunityProgramResource extends Resource
     protected static ?string $pluralModelLabel = 'Pengabdian Masyarakat';
     protected static ?string $navigationGroup = 'Data';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
