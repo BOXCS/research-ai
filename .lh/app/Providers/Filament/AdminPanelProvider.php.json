@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1755701070446,
@@ -16,6 +16,10 @@
                 {
                     "date": 1755702118018,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,9 @@\n             ->default()\n             ->id('admin')\n             ->path('admin')\n             ->login()\n+            ->registration()\n             ->viteTheme('resources/css/filament/admin/theme.css')\n             ->colors([\n                 'primary' => Color::Amber,\n             ])\n"
+                },
+                {
+                    "date": 1756179434758,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,8 @@\n             ->default()\n             ->id('admin')\n             ->path('admin')\n             ->login()\n-            ->registration()\n             ->viteTheme('resources/css/filament/admin/theme.css')\n             ->colors([\n                 'primary' => Color::Amber,\n             ])\n"
                 }
             ],
             "date": 1755701070446,
