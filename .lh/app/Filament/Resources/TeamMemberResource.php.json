@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 14,
             "patches": [
                 {
                     "date": 1755729941036,
@@ -60,6 +60,10 @@
                 {
                     "date": 1755914914930,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,22 +40,22 @@\n                 Forms\\Components\\TextInput::make('education')\n                     ->label('Pendidikan')\n                     ->placeholder('Contoh: S3'),\n \n-                    Forms\\Components\\TextInput::make('experience_years')\n+                Forms\\Components\\TextInput::make('experience_years')\n                     ->numeric()\n                     ->minValue(0)\n                     ->maxValue(100)\n                     ->label('Tahun Pengalaman')\n                     ->placeholder('Contoh: 5')\n-                    ->dehydrateStateUsing(fn ($state) => $state ? \"{$state} Tahun Pengalaman\" : null)\n+                    ->dehydrateStateUsing(fn($state) => $state ? \"{$state} Tahun Pengalaman\" : null)\n                     ->afterStateHydrated(function ($component, $state) {\n                         // Supaya saat edit, hanya angka tahun yang muncul\n                         if ($state && preg_match('/(\\d+)/', $state, $matches)) {\n                             $component->state($matches[1]);\n                         }\n                     })\n-                    ->required(),                \n+                    ->required(),\n \n                 Forms\\Components\\TextInput::make('email')\n                     ->email()\n                     ->placeholder('contoh@email.com'),\n@@ -75,19 +75,21 @@\n                 Forms\\Components\\TextInput::make('h_index')\n                     ->label('H-Index')\n                     ->placeholder('Contoh: 10'),\n \n-                    Forms\\Components\\FileUpload::make('image')\n+                Forms\\Components\\FileUpload::make('image')\n                     ->image()\n                     ->directory('team-members')\n                     ->disk('public')\n                     ->maxSize(2048)\n+                    ->imageEditor() // aktifkan editor bawaan (crop, rotate, scale, flip)\n                     ->getUploadedFileNameForStorageUsing(function ($file) {\n                         return Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME))\n                             . '-' . time() . '.' . $file->getClientOriginalExtension();\n                     }),\n-                \n \n+\n+\n                 Forms\\Components\\Textarea::make('bio')\n                     ->label('Bio')\n                     ->rows(5)\n                     ->placeholder('Tuliskan deskripsi singkat tentang anggota tim'),\n"
+                },
+                {
+                    "date": 1756179619664,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,13 @@\n     protected static ?string $navigationIcon = 'heroicon-o-users';\n     protected static ?string $navigationLabel = 'Team Members';\n     protected static ?string $navigationGroup = 'Data';\n \n+    public static function getNavigationBadge(): ?string\n+    {\n+        return static::getModel()::count();\n+    }\n+\n     public static function form(Form $form): Form\n     {\n         return $form\n             ->schema([\n"
                 }
             ],
             "date": 1755729941036,
